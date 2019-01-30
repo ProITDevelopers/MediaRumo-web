@@ -1,0 +1,27 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders,HttpErrorResponse} from '@angular/common/http';
+import { Subscritor } from './model/subscritor';
+import { Observable } from 'rxjs';
+import { catchError} from 'rxjs/operators';
+@Injectable({
+  providedIn: 'root'
+})
+export class RegistoService {
+
+  constructor(private http:HttpClient) { }
+   url="https://mediarumos.herokuapp.com/cliente";
+   headers = new HttpHeaders();
+   
+   cadastrar(subscritor:Subscritor):Observable<any>{
+    return this.http.post(this.url,subscritor, { headers: this.headers });
+   }
+   private handlerError(errorResponse:HttpErrorResponse){
+   	if(errorResponse.error instanceof ErrorEvent){
+   		console.error('Client Side Error: ', errorResponse.error.message);
+   	}else{
+   		console.log('Server side Error: ', errorResponse);
+   	}
+   	//return new ErrorObservable()
+
+   }
+}
