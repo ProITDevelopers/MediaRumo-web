@@ -1,33 +1,35 @@
 <div class="container">
 	<div class="row" >
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<h1 class="text-justify my-5">Lista de subscritores</h1>
-			<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-sm table-hover">
-				<thead>
-					<tr> 
-						<th scope="col">Id Subscritor</th> 
-						<th scope="col">Título</th>
-						<th scope="col">Nome Próprio</th> 
-						<th scope="col">Apelido</th>
-						<th scope="col">Data de nascimento</th> 
-						<th scope="col">Email</th>
-						<th scope="col">Cidade</th>
-						<th scope="col">Rua </th>
-					</tr> 
-				</thead>
-				<tbody>
-					<tr scope="row" *ngFor=" let item of dados">
-						<td>{{item.Cliente_Id}}</td>
-						<td> {{item.Title}} </td>
-						<td> {{item.First_Name}} </td>
-						<td>{{item.Last_Name}}</td>
-						<td>{{item.Date_of_Birth | date: 'dd/MM/yyyy' }}</td>
-						<td>{{item.Email}}</td>
-						<td>{{item.City}} </td>
-						<td>{{item.Street}} </td>
-					</tr>
-				</tbody>
-			</table>
+			<h1 class="text-left my-5">Lista de subscritores</h1>
+			<div class="table-responsive">
+				<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-sm table-hover">
+					<thead>
+						<tr> 
+							<th scope="col">Id Subscritor</th> 
+							<th scope="col">Título</th>
+							<th scope="col">Nome Próprio</th> 
+							<th scope="col">Apelido</th>
+							<th scope="col">Data de nascimento</th> 
+							<th scope="col">Email</th>
+							<th scope="col">Cidade</th>
+							<th scope="col">Rua </th>
+						</tr> 
+					</thead>
+					<tbody>
+						<tr scope="row" *ngFor=" let item of dados">
+							<td>{{item.Cliente_Id}}</td>
+							<td> {{item.Title}} </td>
+							<td> {{item.First_Name}} </td>
+							<td>{{item.Last_Name}}</td>
+							<td>{{item.Date_of_Birth | date: 'dd/MM/yyyy' }}</td>
+							<td>{{item.Email}}</td>
+							<td>{{item.City}} </td>
+							<td>{{item.Street}} </td>
+						</tr>
+					</tbody>
+				</table>
+			</div>	
 		</div>
 	</div>
 	<ng-template #loading><i class="fa fa-spinner fa-spin" style="font-size:60px"></i></ng-template>
