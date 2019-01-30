@@ -11,16 +11,19 @@ import { defineLocale } from 'ngx-bootstrap/chronos';
 import { ptBrLocale } from 'ngx-bootstrap/locale';
 defineLocale('pt-br', ptBrLocale); 
 
+import { DataTablesModule } from 'angular-datatables';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistoComponent } from './registo/registo.component';
+import { ListaSubscritoresComponent } from './lista-subscritores/lista-subscritores.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistoComponent
+    RegistoComponent,
+    ListaSubscritoresComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ import { RegistoComponent } from './registo/registo.component';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
+    DataTablesModule,
     BsDatepickerModule.forRoot(),
     ToastrModule.forRoot({
     timeOut: 20000,

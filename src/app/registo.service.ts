@@ -15,6 +15,9 @@ export class RegistoService {
    cadastrar(subscritor:Subscritor):Observable<any>{
     return this.http.post(this.url,subscritor, { headers: this.headers });
    }
+   getSubscritores():Observable<any>{
+    return this.http.get(this.url, { headers: this.headers });
+   }
    private handlerError(errorResponse:HttpErrorResponse){
    	if(errorResponse.error instanceof ErrorEvent){
    		console.error('Client Side Error: ', errorResponse.error.message);

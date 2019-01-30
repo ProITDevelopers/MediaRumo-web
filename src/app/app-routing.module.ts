@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegistoComponent } from './registo/registo.component';
+import { ListaSubscritoresComponent } from './lista-subscritores/lista-subscritores.component';
 
 const routes: Routes = [
 	{
@@ -14,6 +15,13 @@ const routes: Routes = [
         //canActivate:[GuardGuard,AdminGuard],
         data: {
           title: 'Registo de Subscritor'
+        }
+    },
+	{
+        path: 'subscritores',
+        component: ListaSubscritoresComponent,
+        data: {
+          title: 'Lista de Subscritores'
         }
     },
     { path: '**', redirectTo: '/registo' }

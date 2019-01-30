@@ -33,8 +33,8 @@ export class RegistoComponent implements OnInit {
   mensagem:string;
   ngOnInit() {
   	//var dt=this.datePipe.transform(new Date(), 'yyyy-MM-dd');
-  	console.log(this.termo)
-  	setTimeout(() => this.toastr.success('sup'))
+  	/*console.log(this.termo)
+  	setTimeout(() => this.toastr.success('sup'))*/
   }
   termoChange() {
     this.termo =  !this.termo;
@@ -51,7 +51,7 @@ export class RegistoComponent implements OnInit {
 
         console.log(data)
         this.dados=data;
-        
+
         this.mensagem='Inscrição feita com sucesso! O seu id é: ' +this.dados.Cliente_Id;
         this.showSuccess(this.dados.Cliente_Id);
         setTimeout(() =>this.clean(form),3000 )
