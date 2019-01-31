@@ -6,7 +6,7 @@ export class Subscritor {
 	rua:string;
 	cidade:string;
 	telemovel:string;
-	titulo:string;
+	bi:string;
 
 	constructor(){}
 }

@@ -2,13 +2,13 @@
   <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-1" >
     <h1 class="text-center my-5">Registo de subscritor</h1>
     <form (ngSubmit)="cadastrarSubscritor(subscritorF)" #subscritorF="ngForm" novalidate >
-      <div class="form-group row"> 
+      <!-- <div class="form-group row"> 
         
         <div class="col-sm-12"> 
           <label class="col-form-label">Título</label>
           <input type="text" class="form-control" placeholder="Escreva o título" name="titulo" [(ngModel)]="subscritor.titulo" #titulo="ngModel" autocomplete="off">
         </div> 
-      </div>  
+      </div>   -->
       <div class="form-group row"> 
         <div class="col-sm-6">
           <label class=" col-form-label">Nome próprio<span style="color: red">*</span></label>
@@ -36,7 +36,7 @@
         </div>
       </div> 
       <div class="form-group row">
-        <div class="col-sm-4" >
+        <div class="col-sm-6" >
           <label class=" col-form-label">Data de nascimento<span style="color: red">*</span></label>  
           <div class="input-group">
             <input type="text" id="dtn" name="dtnasc" class="form-control" [(ngModel)]="subscritor.dataNascimento" placeholder="Data de nascimento" #dp="bsDatepicker"
@@ -48,7 +48,25 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
+          <label class="col-form-label">Bilhete de identidade<span style="color: red">*</span></label>
+          <div [class.has-success]="bi.valid && ( bi.dirty || bi.touched)" [class.has-danger]="!bi.valid && ( bi.dirty || bi.touched)">  
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="sizing-addon1"><i class="fa fa-file-text"></i></span>
+              </div>
+              <input type="text" class="form-control" placeholder="Bilhete de identidade" required maxlength="14" minlength="14" name="bi" [(ngModel)]="subscritor.bi" #bi="ngModel" pattern="^[0-9]{9}[a-zA-Z]{2}[0-9]{3}" autocomplete="off">
+            </div>
+            <div class="alert alert-danger error" *ngIf="!bi.valid && ( bi.dirty || bi.touched)" style="margin-top: 5px;">
+              <span *ngIf="bi.errors.required" class="help-block"><i class="fa fa-remove"></i> Campo obrigatório.</span>
+              <span *ngIf="bi.errors.minlength" class="help-block"><i class="fa fa-remove"></i> Deve ter 14 caracteres</span>
+              <span *ngIf="bi.errors.pattern" class="help-block"><i class="fa fa-remove"></i> Número do bilhete de identidade inválido</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row"> 
+        <div class="col-sm-6">
           <label class="col-form-label">E-mail<span style="color: red">*</span></label>
           <div  [class.has-success]="email.valid && ( email.dirty || email.touched)" [class.has-danger]="!email.valid && ( email.dirty || email.touched)">  
             <div class="input-group">
@@ -63,7 +81,7 @@
             </div> 
           </div>
         </div> <!---->
-        <div class="col-sm-4">
+        <div class="col-sm-6">
           <label class="col-form-label">Nº Telemóvel<span style="color: red">*</span></label>
           <div [class.has-success]="telefone.valid && (telefone.dirty || telefone.touched)" [class.has-danger]="!telefone.valid && (telefone.dirty || telefone.touched)">  
             <div class="input-group">

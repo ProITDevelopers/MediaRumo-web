@@ -54,7 +54,7 @@ export class RegistoComponent implements OnInit {
 
         this.mensagem='Inscrição feita com sucesso! O seu id é: ' +this.dados.Cliente_Id;
         this.showSuccess(this.dados.Cliente_Id);
-        setTimeout(() =>this.clean(form),3000 )
+        setTimeout(() =>this.clean(form),5000 )
         
     },
        error => {

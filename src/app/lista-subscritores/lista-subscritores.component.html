@@ -6,10 +6,10 @@
 				<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-sm table-hover">
 					<thead>
 						<tr> 
-							<th scope="col">Id Subscritor</th> 
-							<th scope="col">Título</th>
+							<th scope="col">Id Subscritor</th>
 							<th scope="col">Nome Próprio</th> 
-							<th scope="col">Apelido</th>
+							<th scope="col">Apelido</th> 
+							<th scope="col">Bilhete Identidade</th>
 							<th scope="col">Data de nascimento</th> 
 							<th scope="col">Email</th>
 							<th scope="col">Cidade</th>
@@ -19,9 +19,9 @@
 					<tbody>
 						<tr scope="row" *ngFor=" let item of dados">
 							<td>{{item.Cliente_Id}}</td>
-							<td> {{item.Title}} </td>
 							<td> {{item.First_Name}} </td>
 							<td>{{item.Last_Name}}</td>
+							<td> {{item.Bi}} </td>
 							<td>{{item.Date_of_Birth | date: 'dd/MM/yyyy' }}</td>
 							<td>{{item.Email}}</td>
 							<td>{{item.City}} </td>
