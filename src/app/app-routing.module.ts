@@ -17,13 +17,13 @@ const routes: Routes = [
           title: 'Registo de Subscritor'
         }
     },
-	{
+	/*{
         path: 'subscritores',
         component: ListaSubscritoresComponent,
         data: {
           title: 'Lista de Subscritores'
         }
-    },
+    },*/
     { path: '**', redirectTo: '/registo' }
 ];
 

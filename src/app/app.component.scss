@@ -1,0 +1,33 @@
+$color_1: white;
+$color_2: #374767;
+$background-color_1: red;
+
+.main {
+	overflow: auto;
+	padding-bottom: 70px;
+}
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: $background-color_1;
+	color: $color_1;
+	text-align: center;
+}
+.footer1 {
+	min-height: 50px;
+	padding: 0 1rem;
+	line-height: 50px;
+	color: $color_2;
+	background-color: $color_1;
+	border-top: 1px solid #e1e6ef;
+}
+.footer-fixed {
+	.footer1 {
+		position: fixed;
+		bottom: 0;
+		z-index: 1000;
+		width: 100%;
+	}
+}

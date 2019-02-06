@@ -18,12 +18,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistoComponent } from './registo/registo.component';
 import { ListaSubscritoresComponent } from './lista-subscritores/lista-subscritores.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistoComponent,
-    ListaSubscritoresComponent
+    ListaSubscritoresComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

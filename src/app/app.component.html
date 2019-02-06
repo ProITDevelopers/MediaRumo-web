@@ -1,25 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #d5b651">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <!-- <a class="navbar-brand" href="#" #b48d00>Media Rumos</a> -->
-  <a class="navbar-brand" href="#"><img src="assets/logo-menu-media-rumo-1.png" alt="logo" height="50" width="100" class="d-inline-block align-top"></a>
+<app-header></app-header>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <!-- <li class="nav-item active">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/']">Home <span class="sr-only">(current)</span></a>
-      </li> -->
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/registo']">Registo</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/subscritores']">Subscritores</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+  <!--<img style="width:100%" src="assets/concurso mediarumo.png" alt="img-concurso" height="500">
+  
 
-<!-- <app-registo></app-registo> -->
 
-<router-outlet></router-outlet>
+ <app-registo></app-registo> -->
+<main class="main">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="footer-fixed">
+  <div class="footer1 ">
+  <a href="http://mediarumo.com/" target="_blank">MediaRumo</a> &copy; 2019 
+    <!--<span class="float-right">Powered by <a href="https://proitconsulting.com">Proit Consulting</a>
+    </span>-->
+</div >
+</footer>
+ 
