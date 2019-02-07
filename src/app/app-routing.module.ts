@@ -16,7 +16,7 @@ const routes: Routes = [
         data: {
           title: 'Registo de Subscritor'
         }
-  },
+  },/*
   {
         path: 'inscricao',
         component: InscricaoComponent,
@@ -24,7 +24,7 @@ const routes: Routes = [
           title: 'Inscrição concurso'
         }
   },
-	/*{
+	{
         path: 'subscritores',
         component: ListaSubscritoresComponent,
         data: {
