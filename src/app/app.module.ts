@@ -19,13 +19,15 @@ import { AppComponent } from './app.component';
 import { RegistoComponent } from './registo/registo.component';
 import { ListaSubscritoresComponent } from './lista-subscritores/lista-subscritores.component';
 import { HeaderComponent } from './header/header.component';
+import { InscricaoComponent } from './inscricao/inscricao.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistoComponent,
     ListaSubscritoresComponent,
-    HeaderComponent
+    HeaderComponent,
+    InscricaoComponent
   ],
   imports: [
     BrowserModule,
