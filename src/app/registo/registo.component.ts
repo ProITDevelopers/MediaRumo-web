@@ -40,30 +40,39 @@ export class RegistoComponent implements OnInit {
     this.termo =  !this.termo;
   }
   clean(form:NgForm){
+    var element = <HTMLInputElement> document.getElementById("myButton");
   	form.reset();
   	this.termoChange();
   	this.dados='';
     this.mensagem='';
-
+    element.disabled = true;
+    element.textContent = "Registrar"; 
   }
   cadastrarSubscritor(form){
+    /*form.value.myButton.disabled = true;
+    form.value.myButton.value = "Please wait...";*/
+    var element = <HTMLInputElement> document.getElementById("myButton");
+    element.disabled = true;
+    element.textContent = "Processando...";
+    //return true;
   	this.subscritorService.cadastrar(this.subscritor).subscribe(data=> {
 
         console.log(data)
         this.dados=data;
 
         this.mensagem='Inscrição feita com sucesso! O seu id é: ' +this.dados.Cliente_Id;
-        this.showSuccess(this.dados.Cliente_Id);
-        setTimeout(() =>this.clean(form),5000 )
-        
+        //this.showSuccess(this.dados.Cliente_Id);
+        setTimeout(() =>this.clean(form),9000 )
     },
        error => {
+        element.disabled = false;
+        element.textContent = "Registrar"; 
        	this.dados=error.error;
        	this.mensagem=error.error;
        	console.log(this.dados)
-        this.showWarning('Ocorreu um erro.'+ this.dados);
+        //this.showWarning('Ocorreu um erro.'+ this.dados);
         console.log(error);
-    });
+    });/**/
 
   }
    showSuccess(id) {
