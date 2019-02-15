@@ -21,9 +21,12 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="sizing-addon1"><i class="fa fa-user"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Escreva o seu nome" required name="nome" [(ngModel)]="subscritor.nomeProprio" #nome="ngModel" autocomplete="off">
+                <input type="text" class="form-control" placeholder="Escreva o seu nome" required name="nome" [(ngModel)]="subscritor.nomeProprio" pattern="^[a-zA-Z]{1,20}$" #nome="ngModel" autocomplete="off">
               </div>
-              <div class="alert alert-danger error" *ngIf="!nome.valid && ( nome.dirty || nome.touched)">*Campo obrigatório</div>
+              <div class="alert alert-danger error" *ngIf="!nome.valid && ( nome.dirty || nome.touched)">
+                <span *ngIf="nome.errors.required" class="help-block"><i class="fa fa-remove"></i> Campo obrigatório.</span>
+                <span *ngIf="nome.errors.pattern" class="help-block"><i class="fa fa-remove"></i> Formato inválido. Deve ter apenas letras.</span>
+              </div>
             </div> 
           </div>
           <div class="col-sm-6">
@@ -33,9 +36,12 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="sizing-addon1"><i class="fa fa-user"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Escreva o seu apelido" required name="apelido" [(ngModel)]="subscritor.apelido" #apelido="ngModel" autocomplete="off">
+                <input type="text" class="form-control" placeholder="Escreva o seu apelido" required name="apelido" [(ngModel)]="subscritor.apelido" pattern="^[a-zA-Z]{1,20}$" #apelido="ngModel" autocomplete="off">
               </div>
-              <div class="alert alert-danger error" *ngIf="!apelido.valid && ( apelido.dirty || apelido.touched)">*Campo obrigatório</div>
+              <div class="alert alert-danger error" *ngIf="!apelido.valid && ( apelido.dirty || apelido.touched)">
+                <span *ngIf="apelido.errors.required" class="help-block"><i class="fa fa-remove"></i> Campo obrigatório.</span>
+                <span *ngIf="apelido.errors.pattern" class="help-block"><i class="fa fa-remove"></i> Formato inválido. Deve ter apenas letras.</span>
+              </div>
             </div> 
           </div>
         </div> 
@@ -43,7 +49,7 @@
           <div class="col-sm-6" >
             <label class=" col-form-label">Data de nascimento<span >*</span></label>  
             <div class="input-group">
-              <input type="text" id="dtn" name="dtnasc" class="form-control" [(ngModel)]="subscritor.dataNascimento" placeholder="Data de nascimento" #dp="bsDatepicker"
+              <input type="text" id="dtn" name="dtnasc" class="form-control" [(ngModel)]="dataNascimento" placeholder="Data de nascimento" #dp="bsDatepicker"
              bsDatepicker [minDate]="minDate" [maxDate]="maxDate" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',containerClass:'theme-blue' }" required readonly>
               <div class="input-group-prepend"> 
                 <span class="input-group-text" id="basic-addon" (click)="dp.toggle()" [attr.aria-expanded]="dp.isOpen">

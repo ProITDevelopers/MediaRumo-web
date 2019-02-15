@@ -29,6 +29,7 @@ export class RegistoComponent implements OnInit {
   termo:boolean=false;
   maxDate: Date;
   minDate: Date;
+  dataNascimento:Date;
   dados;
   mensagem:string;
   ngOnInit() {
@@ -55,12 +56,13 @@ export class RegistoComponent implements OnInit {
     element.disabled = true;
     element.textContent = "Processando...";
     //return true;
+    this.subscritor.dataNascimento=this.datePipe.transform(this.dataNascimento, 'yyyy-MM-dd'); 
   	this.subscritorService.cadastrar(this.subscritor).subscribe(data=> {
 
         console.log(data)
         this.dados=data;
 
-        this.mensagem='Inscrição feita com sucesso! O seu id é: ' +this.dados.Cliente_Id;
+        this.mensagem='Inscrição feita com sucesso! O seu id é: ' +this.dados[0];
         //this.showSuccess(this.dados.Cliente_Id);
         setTimeout(() =>this.clean(form),9000 )
     },

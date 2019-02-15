@@ -1,7 +1,7 @@
 export class Subscritor {
 	nomeProprio:string;
 	apelido:string;
-	dataNascimento:Date;
+	dataNascimento:string;
 	email:string;
 	rua:string;
 	cidade:string;

@@ -9,7 +9,8 @@ import { catchError} from 'rxjs/operators';
 export class RegistoService {
 
   constructor(private http:HttpClient) { }
-   url="https://mediarumos.herokuapp.com/cliente";
+   url="http://ec2-3-16-23-217.us-east-2.compute.amazonaws.com:8080/cliente";
+
    headers = new HttpHeaders();
    
    cadastrar(subscritor:Subscritor):Observable<any>{
