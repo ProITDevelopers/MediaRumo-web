@@ -73,7 +73,6 @@ export class RegistoComponent implements OnInit {
         this.mensagem='';
        	console.log(this.dados)
         //this.showWarning('Ocorreu um erro.'+ this.dados);
-        //console.log(error);
     });/**/
 
   }
