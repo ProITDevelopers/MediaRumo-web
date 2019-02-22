@@ -40,47 +40,47 @@ export class RegistoComponent implements OnInit {
   termoChange() {
     this.termo =  !this.termo;
   }
+  changeTextButton(estado:boolean,texto:string){
+    var element = <HTMLInputElement> document.getElementById("myButton");
+    element.disabled = estado;
+    element.textContent = texto;
+  }
   clean(form:NgForm){
     var element = <HTMLInputElement> document.getElementById("myButton");
   	form.reset();
   	this.termoChange();
   	this.dados='';
     this.mensagem='';
-    element.disabled = true;
-    element.textContent = "Registrar"; 
+    this.changeTextButton(true,"Registrar");
   }
   cadastrarSubscritor(form){
     /*form.value.myButton.disabled = true;
     form.value.myButton.value = "Please wait...";*/
-    var element = <HTMLInputElement> document.getElementById("myButton");
-    element.disabled = true;
-    element.textContent = "Processando...";
-    //return true;
+    this.changeTextButton(true,"Processando...");
     this.subscritor.dataNascimento=this.datePipe.transform(this.dataNascimento, 'yyyy-MM-dd'); 
   	this.subscritorService.cadastrar(this.subscritor).subscribe(data=> {
 
-        console.log(data)
+        //console.log(data)
         this.dados=data;
-
         this.mensagem='Inscrição feita com sucesso! O seu id é: ' +this.dados[0];
-        //this.showSuccess(this.dados.Cliente_Id);
+        //this.showSuccess(this.dados[0]);
         setTimeout(() =>this.clean(form),9000 )
     },
        error => {
-        element.disabled = false;
-        element.textContent = "Registrar"; 
-       	this.dados=error.error;
-       	this.mensagem=error.error;
+        this.changeTextButton(false,"Registrar");
+       	this.dados=error.error.error;
+       	//this.mensagem=error.error;
+        this.mensagem='';
        	console.log(this.dados)
         //this.showWarning('Ocorreu um erro.'+ this.dados);
-        console.log(error);
+        //console.log(error);
     });/**/
 
   }
-   showSuccess(id) {
+  //Funções para o toastr
+  showSuccess(id) {
     this.toastr.success('Inscrição feita com sucesso! O seu id é: ' +id, 'Success!');
-  }
-    
+  } 
   showError() {
     //this.toastr.error('Algo não está bem!'+ this.dados.mensagem, 'Oops!');
   }

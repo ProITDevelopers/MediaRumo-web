@@ -9,7 +9,7 @@ import { catchError} from 'rxjs/operators';
 export class RegistoService {
 
   constructor(private http:HttpClient) { }
-   url="http://ec2-3-16-23-217.us-east-2.compute.amazonaws.com:8080/cliente";
+   url="https://console.proitappsolutions.com/cliente";
 
    headers = new HttpHeaders();
    

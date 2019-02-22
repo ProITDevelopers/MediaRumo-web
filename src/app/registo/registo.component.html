@@ -73,6 +73,7 @@
                 <span *ngIf="bi.errors.pattern" class="help-block"><i class="fa fa-remove"></i> Formato inválido. Deve ser 123456789AZ001.</span>
               </div>
             </div>
+            <span style="color: red" *ngIf="dados?.bi">{{dados.bi}}</span>
           </div>
         </div>
         <div class="form-group row"> 
@@ -89,7 +90,8 @@
                 <span *ngIf="email.errors.required" class="help-block"><i class="fa fa-remove"></i> Campo obrigatório.</span>
                 <span *ngIf="email.errors.pattern" class="help-block"><i class="fa fa-remove"></i> Email inválido</span>
               </div> 
-            </div>
+            </div> 
+            <span style="color: red" *ngIf="dados?.email">{{dados.email}}</span>
           </div> <!---->
           <div class="col-sm-6">
             <label class="col-form-label">Nº Telemóvel<span >*</span></label>
@@ -137,7 +139,7 @@
             <button type="button" class="btn btn-outline-secondary" (click)="clean(subscritorF)"> Repor </button>
           </div>
         </div>
-        <span style="color: red" *ngIf="dados">{{mensagem}}</span>
+        <span style="color: red" *ngIf="mensagem">{{mensagem}}</span>
       </form>
     </div>
   </div>
