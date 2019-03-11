@@ -5,8 +5,8 @@
     </div>
     <div class="col-md-5" >
       <h2 class="text-center my-5">Inscrição Sorteio MediaRumo</h2>
-      <form (ngSubmit)="cadastrarSubscritor(subscritorF)" #subscritorF="ngForm" novalidate >
-        <!-- <div class="form-group row"> 
+      <form (ngSubmit)="validarSubscritor(subscritorF)" #subscritorF="ngForm" novalidate >
+        <!-- <div class="form-group row"> cadastrarSubscritor
           
           <div class="col-sm-12"> col-md-10 offset-md-1 col-sm-10 offset-sm-1
             <label class="col-form-label">Título</label>
@@ -108,6 +108,7 @@
                 <span *ngIf="telefone.errors.pattern" class="help-block"><i class="fa fa-remove"></i> Formato inválido</span>
               </div>
             </div>
+             <span style="color: red" *ngIf="dados?.telemovel">{{dados.telemovel}}</span>
           </div>
         </div>
         <div class="form-group row"> 
@@ -128,7 +129,7 @@
         </div> 
         <div class="form-group form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1" [checked]="termo" (change)="termo= !termo">
-          <label class="form-check-label" for="exampleCheck1">Concordo com a <a href="#">Política de Privacidade</a> e os <a href="#">Termos de Serviço</a></label>
+          <label class="form-check-label" for="exampleCheck1">Concordo com a <a href="#">Política de Privacidade</a> e os <a href="assets/termosCondicoes.pdf">Termos de Serviço</a></label>
            <label class="col-form-label" for="exampleInfo"><span style="color: red;">* </span> O custo de adesão ao concurso é de: 5000 kz</label>
         </div>
         
@@ -144,3 +145,66 @@
     </div>
   </div>
 </div>  
+
+ <!--Button trigger modal 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>-->
+
+<div id="modalTrigger" data-toggle="modal" data-target="#exampleModal"></div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirmar Inscrição</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container"> 
+          <p class="text-left">Enviamos um código de confirmação para o seu número de telefone +244 {{subscritor.telemovel}} </p>
+          <p><a href="#">Não recebeu o código?</a></p>
+          <h5>Insira o código de 6 dígitos: </h5> <!-- -->
+          <div class="col-xs-6 ml-2">
+            <form (ngSubmit)="cadastrarSubscritor(validarF)" #validarF="ngForm" novalidate >
+              <div class="form-group phone-number row mb-2 ">
+                <div class="col-xs-1 mr-2">
+                  <input type="tel" name="phone1" class="form-control" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo1" #ccodigo1="ngModel" required title="" autocomplete="off">
+                </div>
+                <div class="col-xs-1 mr-2">
+                  <input type="tel" name="phone2" class="form-control" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo2" #ccodigo2="ngModel" required title="" autocomplete="off">
+                </div>
+                <div class="col-xs-1 mr-2">
+                  <input type="tel" name="phone3" class="form-control" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo3" #ccodigo3="ngModel" required title="" autocomplete="off">
+                </div>
+                <div class="col-xs-1 mr-2">
+                  <input type="tel" name="phone4" class="form-control" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo4" #ccodigo4="ngModel" required title="" autocomplete="off">
+                </div>
+                <div class="col-xs-1 mr-2">
+                  <input type="tel" name="phone5" class="form-control" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo5" #ccodigo5="ngModel" required title="" autocomplete="off">
+                </div>
+                <div class="col-xs-1 mr-2">
+                  <input type="tel" name="phone6" class="form-control" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo6" #ccodigo6="ngModel" required title="" autocomplete="off">
+                </div>
+              </div>
+              <span class="mb-5" style="color: red" *ngIf="mensagemChave">{{mensagemChave}}</span>
+              <div class="form-group row">
+                <div class="col-sm-9">
+                  <button type="submit" class="btn btn-primary btn-md" id="validar"
+                  [disabled]="!validarF.form.valid">Enviar</button>
+                </div>
+              </div>
+              
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>-->
+    </div>
+  </div>
+</div>

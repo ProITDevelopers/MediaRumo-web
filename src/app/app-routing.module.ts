@@ -6,15 +6,15 @@ import { InscricaoComponent } from './inscricao/inscricao.component';
 const routes: Routes = [
 	{
 	    path: '',
-	    redirectTo: '/registo',
+	    redirectTo: '/inscricao',
 	    pathMatch: 'full',
 	},
 	{
-        path: 'registo',
+        path: 'inscricao',
         component: RegistoComponent,
         //canActivate:[GuardGuard,AdminGuard],
         data: {
-          title: 'Registo de Subscritor'
+          title: 'Inscrição concurso'
         }
   },/*
   {
@@ -31,7 +31,7 @@ const routes: Routes = [
           title: 'Lista de Subscritores'
         }
     },*/
-    { path: '**', redirectTo: '/registo' }
+    { path: '**', redirectTo: '/inscricao' }
 ];
 
 @NgModule({

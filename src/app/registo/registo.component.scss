@@ -30,3 +30,26 @@ $background-color_2: #f9d608;
 	    }
 	}
 }
+$color_1: black;
+
+/*Phone Number Input "hack"*/
+.phone-number {
+	.row{
+		.col-xs-1 {
+			&::after {
+				content: "-";
+				position: absolute;
+				right: 5px;
+				color: $color_1;
+				border: 0px solid;
+				top: 5px;
+			}
+			padding-left: 0;
+		}
+	}
+	.col-xs-4 {
+		width: 25%;
+		padding-left: 0;
+	}
+}
+

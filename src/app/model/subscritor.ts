@@ -7,6 +7,15 @@ export class Subscritor {
 	cidade:string;
 	telemovel:string;
 	bi:string;
+	chave?:string;
+
+	constructor(){}
+}
+export class SubscritorValidar {
+	
+	email:string;
+	telemovel:string;
+	bi:string;
 
 	constructor(){}
 }
