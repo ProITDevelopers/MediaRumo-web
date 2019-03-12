@@ -64,7 +64,7 @@ export class RegistoComponent implements OnInit {
   }
   cadastrarSubscritor(form){
     let num=this.codigo1+this.codigo2+this.codigo3+this.codigo4+this.codigo5+this.codigo6;
-    console.log(num);
+    //console.log(num);
     this.subscritor.chave=num.toString();
     /*form.value.myButton.disabled = true;
     form.value.myButton.value = "Please wait...";*/
@@ -87,7 +87,7 @@ export class RegistoComponent implements OnInit {
        	//this.mensagem=error.error;
         this.mensagem='';
         this.mensagemChave=this.dados.chave;
-       	console.log(this.dados)
+       	//console.log(this.dados)
         //this.showWarning('Ocorreu um erro.'+ this.dados);
     });/**/
   }
@@ -98,12 +98,12 @@ export class RegistoComponent implements OnInit {
     this.subscritorv.telemovel=this.subscritor.telemovel;
     this.subscritorv.bi=this.subscritor.bi;
     this.subscritorv.email=this.subscritor.email;
-    console.log(this.subscritorv);
+    //console.log(this.subscritorv);
     this.form=form;
     //$('#modalTrigger').click();
     this.subscritorService.validarDados(this.subscritorv).subscribe(data=> {
 
-        console.log(data)
+        //console.log(data)
         this.dados=data;
         $('#modalTrigger').click();
     },
@@ -112,8 +112,7 @@ export class RegistoComponent implements OnInit {
       this.dados=error.error.error;
       //this.mensagem=error.error;
       this.mensagem='';
-
-      console.log(this.dados)
+      //console.log(this.dados)
     });/**/
   }
   //Funções para o toastr
@@ -144,7 +143,7 @@ export class RegistoComponent implements OnInit {
   }
   numeroMostrar(form){
     let num=this.codigo1+this.codigo2+this.codigo3+this.codigo4+this.codigo5+this.codigo6;
-    console.log(num);
+    //console.log(num);
     //this.clean(this.form);
     this.subscritor.chave=num.toString();
     this.cadastrarSubscritor(form);
