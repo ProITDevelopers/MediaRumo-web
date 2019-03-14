@@ -8,6 +8,7 @@ import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 
 import { Subscritor,SubscritorValidar } from '../model/subscritor';
 import { RegistoService} from '../registo.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-registo',
@@ -140,6 +141,30 @@ export class RegistoComponent implements OnInit {
       //mandar a chave inserida pelo usuario com o numero de telefone
       //se estiver tudo bem mostrar o numero de inscricao
     }
+  }
+  keytab1(event,maxlength){
+    let nextInput = event.srcElement.nextElementSibling; // get the sibling element
+    console.log(event)
+    var target = event.target || event.srcElement;
+    var id = target.id
+    console.log(id.maxlength); // prints undefined
+
+    if(nextInput == null)  // check the maxLength from here
+        return;
+    else
+        nextInput.focus();   // focus if not null
+  }
+  keytab(event,maxlength){
+    //console.log('value '+event.target.value,'length '+event.target.value.length,'maxlength '+maxlength);
+    $(".input").keyup(function () {
+      //var maxLength = $(this).attr("maxlength");
+      var length=event.target.value.length;
+      if (length === maxlength) {
+        //$(this).next('.input').focus();
+       var nextFirst = $(this).closest('.col-xs-1').next().find('.input');
+       nextFirst.focus();
+      }/**/
+    });
   }
   numeroMostrar(form){
     let num=this.codigo1+this.codigo2+this.codigo3+this.codigo4+this.codigo5+this.codigo6;

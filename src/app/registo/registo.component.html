@@ -158,7 +158,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Confirmar Inscrição</h5>
-        <<!-- button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button> -->
       </div>
@@ -171,22 +171,22 @@
             <form (ngSubmit)="cadastrarSubscritor(validarF)" #validarF="ngForm" novalidate >
               <div class="form-group phone-number row mb-2 ">
                 <div class="col-xs-1 mr-2">
-                  <input type="tel" name="phone1" class="form-control" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo1" #ccodigo1="ngModel" required title="" autocomplete="off">
+                  <input type="tel" id="c1" name="phone1" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo1" #ccodigo1="ngModel" required title="" (keyup)="keytab($event, 1)" autocomplete="off" autofocus="">
                 </div>
                 <div class="col-xs-1 mr-2">
-                  <input type="tel" name="phone2" class="form-control" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo2" #ccodigo2="ngModel" required title="" autocomplete="off">
+                  <input type="tel" id="c2" name="phone2" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo2" #ccodigo2="ngModel" required title="" (keyup)="keytab($event, 1)" autocomplete="off">
                 </div>
                 <div class="col-xs-1 mr-2">
-                  <input type="tel" name="phone3" class="form-control" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo3" #ccodigo3="ngModel" required title="" autocomplete="off">
+                  <input type="tel" id="c3" name="phone3" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo3" #ccodigo3="ngModel" required title="" (keyup)="keytab($event, 1)" autocomplete="off">
                 </div>
                 <div class="col-xs-1 mr-2">
-                  <input type="tel" name="phone4" class="form-control" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo4" #ccodigo4="ngModel" required title="" autocomplete="off">
+                  <input type="tel" id="c4" name="phone4" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo4" #ccodigo4="ngModel" required title="" (keyup)="keytab($event, 1)" autocomplete="off">
                 </div>
                 <div class="col-xs-1 mr-2">
-                  <input type="tel" name="phone5" class="form-control" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo5" #ccodigo5="ngModel" required title="" autocomplete="off">
+                  <input type="tel" id="c5" name="phone5" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo5" #ccodigo5="ngModel" required title="" (keyup)="keytab($event, 1)" autocomplete="off">
                 </div>
                 <div class="col-xs-1 mr-2">
-                  <input type="tel" name="phone6" class="form-control" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo6" #ccodigo6="ngModel" required title="" autocomplete="off">
+                  <input type="tel" id="c6" name="phone6" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo6" #ccodigo6="ngModel" required title="" autocomplete="off">
                 </div>
               </div>
               <span class="mb-5" style="color: red" *ngIf="mensagemChave">{{mensagemChave}}</span>
@@ -199,6 +199,14 @@
               
             </form>
           </div>
+         <!--  <div class="row"><form >
+            <input type="tel" class="input mr-2" value="" size="1" maxlength="1" pattern="[0-9]{1}"required title="" (keyup)="keytab($event, 1)" autocomplete="off" autofocus >
+            <input type="tel" class="mr-2 input" value="" size="1" maxlength="1" pattern="[0-9]{1}"required title="" (keyup)="keytab($event, 1)" autocomplete="off">
+            <input type="tel" class="mr-2 input" value="" size="1" maxlength="1" pattern="[0-9]{1}"required title="" (keyup)="keytab($event, 1)" autocomplete="off">
+            <input type="tel" class="input mr-2" value="" size="1" maxlength="1" pattern="[0-9]{1}"required title="" (keyup)="keytab($event, 1)" autocomplete="off">
+            <input type="tel" class="input mr-2" value="" size="1" maxlength="1" pattern="[0-9]{1}"required title="" (keyup)="keytab($event, 1)" autocomplete="off">
+            <input type="tel" class="input mr-2" value="" size="1" maxlength="1" pattern="[0-9]{1}"required title=""  autocomplete="off">
+          </form></div> -->
         </div>
       </div>
       <!-- <div class="modal-footer">
