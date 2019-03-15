@@ -58,8 +58,16 @@ export class RegistoComponent implements OnInit {
   clean(form:NgForm,form1?:NgForm){
     var element = <HTMLInputElement> document.getElementById("myButton");
   	form.reset();
+    this.changeTextButton(true,"Registrar");
   	this.termoChange();
   	this.dados='';
+    this.mensagem='';
+    $('#modalTrigger').click();
+  }
+  cancelar(form:NgForm){
+    form.reset();
+    this.termoChange();
+    this.dados='';
     this.mensagem='';
     this.changeTextButton(true,"Registrar");
   }
@@ -156,14 +164,18 @@ export class RegistoComponent implements OnInit {
   }
   keytab(event,maxlength){
     //console.log('value '+event.target.value,'length '+event.target.value.length,'maxlength '+maxlength);
-    $(".input").keyup(function () {
+    $(".input").keypress(function (e) {
       //var maxLength = $(this).attr("maxlength");
-      var length=event.target.value.length;
-      if (length === maxlength) {
-        //$(this).next('.input').focus();
-       var nextFirst = $(this).closest('.col-xs-1').next().find('.input');
-       nextFirst.focus();
-      }/**/
+      if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+       console.log('h');
+      }else{
+        var length=event.target.value.length;
+        if (length === maxlength) {
+          //$(this).next('.input').focus();
+         var nextFirst = $(this).closest('.col-xs-1').next().find('.input');
+         nextFirst.focus();
+        }/**/
+      }  
     });
   }
   keytab2(event,maxlength){
