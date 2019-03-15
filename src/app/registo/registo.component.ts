@@ -166,6 +166,16 @@ export class RegistoComponent implements OnInit {
       }/**/
     });
   }
+  keytab2(event,maxlength){
+    //console.log('value '+event.target.value,'length '+event.target.value.length,'maxlength '+maxlength);
+    $(".input").keyup(function () {
+      //var maxLength = $(this).attr("maxlength");
+      var length=event.target.value.length;
+      if (length === maxlength) {
+        $(this).next('.input').focus();
+      }
+    });
+  }
   numeroMostrar(form){
     let num=this.codigo1+this.codigo2+this.codigo3+this.codigo4+this.codigo5+this.codigo6;
     //console.log(num);

@@ -130,7 +130,7 @@
         <div class="form-group form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1" [checked]="termo" (change)="termo= !termo">
           <label class="form-check-label" for="exampleCheck1">Concordo com a <a href="#">Política de Privacidade</a> e os <a href="assets/termosCondicoes.pdf">Termos de Serviço</a></label>
-           <label class="col-form-label" for="exampleInfo"><span style="color: red;">* </span> O custo de adesão ao concurso é de: 5000 kz</label>
+           <label class="col-form-label" for="exampleInfo"><!-- <span style="color: red;">* </span> --> O custo de adesão ao concurso é de: 5000 kz</label>
         </div>
         
         <div class="form-group row">
@@ -140,7 +140,10 @@
             <button type="button" class="btn btn-outline-secondary" (click)="clean(subscritorF)"> Repor </button>
           </div>
         </div>
-        <span style="color: red" *ngIf="mensagem">{{mensagem}}</span>
+        <div class="alert alert-success" role="alert" *ngIf="mensagem">
+          <i class="fa fa-check "></i> {{mensagem}}
+        </div>
+        <!-- <span style="color: red" ></span> -->
       </form>
     </div>
   </div>
@@ -160,7 +163,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Confirmar Inscrição</h5>
         <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-        </button> -->
+        </button>--> 
       </div>
       <div class="modal-body">
         <div class="container"> 
@@ -171,7 +174,7 @@
             <form (ngSubmit)="cadastrarSubscritor(validarF)" #validarF="ngForm" novalidate >
               <div class="form-group phone-number row mb-2 ">
                 <div class="col-xs-1 mr-2">
-                  <input type="tel" id="c1" name="phone1" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo1" #ccodigo1="ngModel" required title="" (keyup)="keytab($event, 1)" autocomplete="off" autofocus="">
+                  <input type="tel" id="c1" name="phone1" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo1" #ccodigo1="ngModel" required title="" (keyup)="keytab($event, 1)" autocomplete="off">
                 </div>
                 <div class="col-xs-1 mr-2">
                   <input type="tel" id="c2" name="phone2" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo2" #ccodigo2="ngModel" required title="" (keyup)="keytab($event, 1)" autocomplete="off">
@@ -200,7 +203,7 @@
             </form>
           </div>
          <!--  <div class="row"><form >
-            <input type="tel" class="input mr-2" value="" size="1" maxlength="1" pattern="[0-9]{1}"required title="" (keyup)="keytab($event, 1)" autocomplete="off" autofocus >
+            <input type="tel" class="input mr-2" value="" size="1" maxlength="1" pattern="[0-9]{1}"required title="" (keyup)="keytab($event, 1)" autocomplete="off">
             <input type="tel" class="mr-2 input" value="" size="1" maxlength="1" pattern="[0-9]{1}"required title="" (keyup)="keytab($event, 1)" autocomplete="off">
             <input type="tel" class="mr-2 input" value="" size="1" maxlength="1" pattern="[0-9]{1}"required title="" (keyup)="keytab($event, 1)" autocomplete="off">
             <input type="tel" class="input mr-2" value="" size="1" maxlength="1" pattern="[0-9]{1}"required title="" (keyup)="keytab($event, 1)" autocomplete="off">
