@@ -47,6 +47,7 @@ export class RegistoComponent implements OnInit {
   	/*console.log(this.termo)
   	setTimeout(() => this.toastr.success('sup'))*/
   }
+  //Mudar estado checkbox
   termoChange() {
     this.termo =  !this.termo;
   }
@@ -55,6 +56,7 @@ export class RegistoComponent implements OnInit {
     element.disabled = estado;
     element.textContent = texto;
   }
+  //Limpar formprincipal
   clean(form:NgForm,form1?:NgForm){
     var element = <HTMLInputElement> document.getElementById("myButton");
   	form.reset();
@@ -71,6 +73,7 @@ export class RegistoComponent implements OnInit {
     this.mensagem='';
     this.changeTextButton(true,"Registrar");
   }
+  //cadastro inscricao apos confirmar
   cadastrarSubscritor(form){
     let num=this.codigo1+this.codigo2+this.codigo3+this.codigo4+this.codigo5+this.codigo6;
     //console.log(num);
@@ -80,13 +83,11 @@ export class RegistoComponent implements OnInit {
     this.changeTextButton(true,"Processando...");
     this.subscritor.dataNascimento=this.datePipe.transform(this.dataNascimento, 'yyyy-MM-dd'); 
   	this.subscritorService.cadastrar(this.subscritor).subscribe(data=> {
-
-        //console.log(data)
+      //console.log(data)
         $('#modalTrigger').click();
         this.dados=data;
-        this.mensagem='Inscrição feita com sucesso! O seu id é: ' +this.dados[0];
-        //this.showSuccess(this.dados[0]);
-        
+        //this.mensagem='Inscrição feita com sucesso! O seu id é: ' +this.dados[0];
+        this.mensagem='Inscrição feita com sucesso';
         //form.reset();
         setTimeout(() =>this.clean(this.form,form),9000 )
     },
@@ -96,14 +97,12 @@ export class RegistoComponent implements OnInit {
        	//this.mensagem=error.error;
         this.mensagem='';
         this.mensagemChave=this.dados.chave;
-       	//console.log(this.dados)
-        //this.showWarning('Ocorreu um erro.'+ this.dados);
     });/**/
   }
+  //enviar telemovel para mensagem
   validarSubscritor(form){
 
     this.changeTextButton(true,"Processando...");
-    //this.subscritor.dataNascimento=this.datePipe.transform(this.dataNascimento, 'yyyy-MM-dd'); 
     this.subscritorv.telemovel=this.subscritor.telemovel;
     this.subscritorv.bi=this.subscritor.bi;
     this.subscritorv.email=this.subscritor.email;
@@ -111,7 +110,6 @@ export class RegistoComponent implements OnInit {
     this.form=form;
     //$('#modalTrigger').click();
     this.subscritorService.validarDados(this.subscritorv).subscribe(data=> {
-
         //console.log(data)
         this.dados=data;
         $('#modalTrigger').click();
@@ -119,9 +117,7 @@ export class RegistoComponent implements OnInit {
     error => {
       this.changeTextButton(false,"Registrar");
       this.dados=error.error.error;
-      //this.mensagem=error.error;
       this.mensagem='';
-      //console.log(this.dados)
     });/**/
   }
   //Funções para o toastr
@@ -134,70 +130,58 @@ export class RegistoComponent implements OnInit {
   showWarning(mensagem) {
     this.toastr.warning(mensagem, 'Alert!');
   }
-    
   showInfo() {
     this.toastr.info('Just some information for you.');
   }
-  //Para implementar na funcao cadastro
-  chaveConfirmacao(data){
-    let chave=this.codigo1+this.codigo2+this.codigo3+this.codigo4+this.codigo5+this.codigo6;
-    //let telefone=this.subscritor.telemovel;
-
-    if(data.chave){
-      $('#modalTrigger').click();
-      //implementar timer por 3 vezes de não inserir a chave com 6 digitos
-      //mandar a chave inserida pelo usuario com o numero de telefone
-      //se estiver tudo bem mostrar o numero de inscricao
-    }
-  }
-  keytab1(event,maxlength){
-    let nextInput = event.srcElement.nextElementSibling; // get the sibling element
-    console.log(event)
-    var target = event.target || event.srcElement;
-    var id = target.id
-    console.log(id.maxlength); // prints undefined
-
-    if(nextInput == null)  // check the maxLength from here
-        return;
-    else
-        nextInput.focus();   // focus if not null
-  }
+  //Tab auto
   keytab(event,maxlength){
     //console.log('value '+event.target.value,'length '+event.target.value.length,'maxlength '+maxlength);
     $(".input").keypress(function (e) {
       //var maxLength = $(this).attr("maxlength");
+      
       if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
        console.log('h');
+       return false
       }else{
         var length=event.target.value.length;
-        if (length === maxlength) {
+        var maxLength=event.target.maxLength;
+        if (length == maxLength) {
+          console.log(maxLength,length)
           //$(this).next('.input').focus();
          var nextFirst = $(this).closest('.col-xs-1').next().find('.input');
          nextFirst.focus();
         }/**/
       }  
     });
+    //backspace
+    $('.input').keyup(function(e){
+      if(e.keyCode == 8 || e.which == 46){
+        console.log('backspace trapped')
+        var prevFirst = $(this).closest('.col-xs-1').prev().find('.input');
+         prevFirst.focus();
+      }
+    })
   }
-  keytab2(event,maxlength){
+  /*keytab2(event,maxlength){
     //console.log('value '+event.target.value,'length '+event.target.value.length,'maxlength '+maxlength);
     $(".input").keyup(function () {
-      //var maxLength = $(this).attr("maxlength");
+      var maxLength=event.target.maxLength;  
       var length=event.target.value.length;
-      if (length === maxlength) {
-        $(this).next('.input').focus();
+      if (length === maxLength) {var nextFirst = $(this).closest('.col-xs-1').next().find('.input');
+         nextFirst.focus();
       }
     });
   }
-  numeroMostrar(form){
-    let num=this.codigo1+this.codigo2+this.codigo3+this.codigo4+this.codigo5+this.codigo6;
-    //console.log(num);
-    //this.clean(this.form);
-    this.subscritor.chave=num.toString();
-    this.cadastrarSubscritor(form);
-    /*if(data){
-      //fechar a modal
-      //limpar os form subscritor e da modal
-    }*/
-    //$('#modalTrigger').click();
-  }
+  movetoNext(current, nextFieldID) {  
+    console.log(current.target.value.length,current.target.maxLength);
+     if(current.which == 8 || current.which == 46){
+       console.log('backspace trapped')
+       var id=current.target.id;
+       $(this).next('input').focus();
+       //current.prev().focus();
+     }
+    if (current.target.value.length >= current.target.maxLength) {  
+
+    document.getElementById(nextFieldID).focus();  }  
+  }*/
 }
