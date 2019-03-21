@@ -1,18 +1,14 @@
 <div class="container-fluid" >
   <div class="row">
     <div class="col-md-7">
-      <img  src="assets/concurso mediarumo.png" alt="img-concurso">
+      <ng-container *ngIf=" image; else loading">
+        <img  [src]="image" alt="img-concurso" >
+      </ng-container>
+      <ng-template #loading ><i class="fa fa-spinner fa-spin" style="font-size:60px"></i></ng-template>
     </div>
     <div class="col-md-5" >
       <h2 class="text-center my-5">Inscrição Sorteio Media Rumo</h2>
       <form (ngSubmit)="validarSubscritor(subscritorF)" #subscritorF="ngForm" novalidate >
-        <!-- <div class="form-group row"> cadastrarSubscritor
-          
-          <div class="col-sm-12"> col-md-10 offset-md-1 col-sm-10 offset-sm-1
-            <label class="col-form-label">Título</label>
-            <input type="text" class="form-control" placeholder="Escreva o título" name="titulo" [(ngModel)]="subscritor.titulo" #titulo="ngModel" autocomplete="off">
-          </div> 
-        </div>   -->
         <div class="form-group row"> 
           <div class="col-sm-6">
             <label class=" col-form-label">Nome próprio<span >*</span></label>
@@ -149,11 +145,11 @@
   </div>
 </div>  
 
- <!--Button trigger modal
+ <!--
+Button trigger modal
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Launch demo modal
 </button> -->
-
 <div id="modalTrigger" data-toggle="modal" data-target="#exampleModal"></div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -168,27 +164,27 @@
       <div class="modal-body">
         <div class="container"> 
           <p class="text-left">Enviamos um código de confirmação para o seu número de telefone +244 {{subscritor.telemovel}} </p>
-          <!----><p *ngIf="subscritor.telemovel"><a href="#" (click)="validarSubscritor(subscritorF)">Não recebeu o código?</a></p> 
+          <p *ngIf="subscritor.telemovel"><a href="#" (click)="validarSubscritor(subscritorF)">Não recebeu o código?</a></p> 
           <h5>Insira o código de 6 dígitos: </h5> 
-          <div class="col-xs-6 ml-2">
+          <!--<div class="col-xs-6 ml-2">-->
             <form (ngSubmit)="cadastrarSubscritor(validarF)" #validarF="ngForm" novalidate >
               <div class="form-group phone-number row mb-2">
-                <div class="col-xs-1 mr-2">
+                <div class="col-xs-1 mr-2 mb-1">
                   <input type="tel" id="c1" name="phone1" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo1" #ccodigo1="ngModel" required title="" (keyup)="keytab($event,1)" autocomplete="off">
                 </div>
-                <div class="col-xs-1 mr-2">
+                <div class="col-xs-1 mr-2  mb-1">
                   <input type="tel" id="c2" name="phone2" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo2" #ccodigo2="ngModel" required title="" (keyup)="keytab($event,1)" autocomplete="off">
                 </div>
-                <div class="col-xs-1 mr-2">
+                <div class="col-xs-1 mr-2  mb-1">
                   <input type="tel" id="c3" name="phone3" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo3" #ccodigo3="ngModel" required title="" (keyup)="keytab($event,1)" autocomplete="off">
                 </div>
-                <div class="col-xs-1 mr-2">
+                <div class="col-xs-1 mr-2 mb-1">
                   <input type="tel" id="c4" name="phone4" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo4" #ccodigo4="ngModel" required title="" (keyup)="keytab($event,1)" autocomplete="off">
                 </div>
-                <div class="col-xs-1 mr-2">
+                <div class="col-xs-1 mr-2 mb-1">
                   <input type="tel" id="c5" name="phone5" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo5" #ccodigo5="ngModel" required title="" (keyup)="keytab($event,1)" autocomplete="off">
                 </div>
-                <div class="col-xs-1 mr-2">
+                <div class="col-xs-1 mr-2 mb-1">
                   <input type="tel" id="c6" name="phone6" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo6" #ccodigo6="ngModel" required title="" autocomplete="off">
                 </div>
               </div>
@@ -201,7 +197,7 @@
                 </div>
               </div> 
             </form>
-          </div>
+          <!-- </div> -->
          <!--  <div class="row"><form >
             <input type="tel" class="input mr-2" value="" size="1" maxlength="1" pattern="[0-9]{1}"required title="" (keyup)="keytab($event, 1)" autocomplete="off">
             <input type="tel" class="mr-2 input" value="" size="1" maxlength="1" pattern="[0-9]{1}"required title="" (keyup)="keytab($event, 1)" autocomplete="off">
