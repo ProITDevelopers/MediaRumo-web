@@ -60,11 +60,12 @@ export class RegistoComponent implements OnInit {
   clean(form:NgForm,form1?:NgForm){
     var element = <HTMLInputElement> document.getElementById("myButton");
   	form.reset();
+    form1.reset();
     this.changeTextButton(true,"Registrar");
   	this.termoChange();
   	this.dados='';
     this.mensagem='';
-    $('#modalTrigger').click();
+    //$('#modalTrigger').click();
   }
   cancelar(form:NgForm){
     form.reset();
@@ -89,7 +90,7 @@ export class RegistoComponent implements OnInit {
         //this.mensagem='Inscrição feita com sucesso! O seu id é: ' +this.dados[0];
         this.mensagem='Inscrição feita com sucesso';
         //form.reset();
-        setTimeout(() =>this.clean(this.form,form),9000 )
+        setTimeout(() =>this.clean(this.form,form),9000)
     },
        error => {
         this.changeTextButton(false,"Registrar");
@@ -140,13 +141,13 @@ export class RegistoComponent implements OnInit {
       //var maxLength = $(this).attr("maxlength");
       
       if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-       console.log('h');
+       //console.log('h');
        return false
       }else{
         var length=event.target.value.length;
         var maxLength=event.target.maxLength;
         if (length == maxLength) {
-          console.log(maxLength,length)
+          //console.log(maxLength,length)
           //$(this).next('.input').focus();
          var nextFirst = $(this).closest('.col-xs-1').next().find('.input');
          nextFirst.focus();
@@ -156,7 +157,7 @@ export class RegistoComponent implements OnInit {
     //backspace
     $('.input').keyup(function(e){
       if(e.keyCode == 8 || e.which == 46){
-        console.log('backspace trapped')
+        //console.log('backspace trapped')
         var prevFirst = $(this).closest('.col-xs-1').prev().find('.input');
          prevFirst.focus();
       }
