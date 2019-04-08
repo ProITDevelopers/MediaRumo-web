@@ -123,19 +123,6 @@ export class RegistoComponent implements OnInit {
       this.mensagem='';
     });/**/
   }
-  //Funções para o toastr
-  showSuccess(id) {
-    this.toastr.success('Inscrição feita com sucesso! O seu id é: ' +id, 'Success!');
-  } 
-  showError() {
-    //this.toastr.error('Algo não está bem!'+ this.dados.mensagem, 'Oops!');
-  }
-  showWarning(mensagem) {
-    this.toastr.warning(mensagem, 'Alert!');
-  }
-  showInfo() {
-    this.toastr.info('Just some information for you.');
-  }
   //Tab auto
   keytab(event,maxlength){
     //console.log('value '+event.target.value,'length '+event.target.value.length,'maxlength '+maxlength);
@@ -165,26 +152,4 @@ export class RegistoComponent implements OnInit {
       }
     })
   }
-  /*keytab2(event,maxlength){
-    //console.log('value '+event.target.value,'length '+event.target.value.length,'maxlength '+maxlength);
-    $(".input").keyup(function () {
-      var maxLength=event.target.maxLength;  
-      var length=event.target.value.length;
-      if (length === maxLength) {var nextFirst = $(this).closest('.col-xs-1').next().find('.input');
-         nextFirst.focus();
-      }
-    });
-  }
-  movetoNext(current, nextFieldID) {  
-    console.log(current.target.value.length,current.target.maxLength);
-     if(current.which == 8 || current.which == 46){
-       console.log('backspace trapped')
-       var id=current.target.id;
-       $(this).next('input').focus();
-       //current.prev().focus();
-     }
-    if (current.target.value.length >= current.target.maxLength) {  
-
-    document.getElementById(nextFieldID).focus();  }  
-  }*/
 }
