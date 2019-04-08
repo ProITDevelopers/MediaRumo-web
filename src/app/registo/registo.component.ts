@@ -42,7 +42,7 @@ export class RegistoComponent implements OnInit {
   codigo4:number;
   codigo5:number;
   codigo6:number;
-  image='assets/concurso mediarumo.png';
+  image='assets/concurso.png';
   
   ngOnInit() {
   	//var dt=this.datePipe.transform(new Date(), 'yyyy-MM-dd');

@@ -8,13 +8,13 @@
       <form (ngSubmit)="validarSubscritor(subscritorF)" #subscritorF="ngForm" novalidate >
         <div class="form-group row"> 
           <div class="col-sm-6">
-            <label class=" col-form-label">Nome próprio<span >*</span></label>
+            <label class=" col-form-label" for="nome1">Nome próprio<span >*</span></label>
             <div  [class.has-success]="nome.valid && ( nome.dirty || nome.touched)" [class.has-danger]="!nome.valid && ( nome.dirty || nome.touched)"> 
               <div class="input-group ">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="sizing-addon1"><i class="fa fa-user"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Escreva o seu nome" required name="nome" [(ngModel)]="subscritor.nomeProprio" pattern="^[a-zA-Z]{1,20}$" #nome="ngModel" autocomplete="off">
+                <input type="text" class="form-control" placeholder="Escreva o seu nome" required name="nome" id="nome1" [(ngModel)]="subscritor.nomeProprio" pattern="^[a-zA-Z]{1,20}$" #nome="ngModel" autocomplete="off">
               </div>
               <div class="alert alert-danger error" *ngIf="!nome.valid && ( nome.dirty || nome.touched)">
                 <span *ngIf="nome.errors.required" class="help-block"><i class="fa fa-remove"></i> Campo obrigatório.</span>
@@ -23,13 +23,13 @@
             </div> 
           </div>
           <div class="col-sm-6">
-            <label class=" col-form-label">Apelido<span>*</span></label>
+            <label class=" col-form-label" for="apelido1">Apelido<span>*</span></label>
             <div  [class.has-success]="apelido.valid && ( apelido.dirty || apelido.touched)" [class.has-danger]="!apelido.valid && ( apelido.dirty || apelido.touched)"> 
               <div class="input-group ">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" id="sizing-addon1"><i class="fa fa-user"></i></span>
+                  <span class="input-group-text" id="sizing-addon2"><i class="fa fa-user"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Escreva o seu apelido" required name="apelido" [(ngModel)]="subscritor.apelido" pattern="^[a-zA-Z]{1,20}$" #apelido="ngModel" autocomplete="off">
+                <input type="text" class="form-control" placeholder="Escreva o seu apelido" required name="apelido" id="apelido1" [(ngModel)]="subscritor.apelido" pattern="^[a-zA-Z]{1,20}$" #apelido="ngModel" autocomplete="off">
               </div>
               <div class="alert alert-danger error" *ngIf="!apelido.valid && ( apelido.dirty || apelido.touched)">
                 <span *ngIf="apelido.errors.required" class="help-block"><i class="fa fa-remove"></i> Campo obrigatório.</span>
@@ -40,9 +40,9 @@
         </div> 
         <div class="form-group row">
           <div class="col-sm-6" >
-            <label class=" col-form-label">Data de nascimento<span >*</span></label>  
+            <label class=" col-form-label" for="dataNascimento1">Data de nascimento<span >*</span></label>  
             <div class="input-group">
-              <input type="text" id="dtn" name="dtnasc" class="form-control" [(ngModel)]="dataNascimento" placeholder="Data de nascimento" #dp="bsDatepicker"
+              <input type="text" id="dtn" name="dtnasc" class="form-control" [(ngModel)]="dataNascimento" id="dataNascimento1" placeholder="Data de nascimento" #dp="bsDatepicker"
              bsDatepicker [minDate]="minDate" [maxDate]="maxDate" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',containerClass:'theme-blue' }" required readonly>
               <div class="input-group-prepend"> 
                 <span class="input-group-text" id="basic-addon" (click)="dp.toggle()" [attr.aria-expanded]="dp.isOpen">
@@ -52,13 +52,13 @@
             </div>
           </div>
           <div class="col-sm-6">
-            <label class="col-form-label">Bilhete de identidade<span >*</span></label>
+            <label class="col-form-label" for="bi1">Bilhete de identidade<span >*</span></label>
             <div [class.has-success]="bi.valid && ( bi.dirty || bi.touched)" [class.has-danger]="!bi.valid && ( bi.dirty || bi.touched)">  
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="sizing-addon1"><i class="fa fa-file-text"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="123456789AZ001" required maxlength="14" minlength="14" name="bi" [(ngModel)]="subscritor.bi" #bi="ngModel" pattern="^[0-9]{9}[a-zA-Z]{2}[0-9]{3}" autocomplete="off">
+                <input type="text" class="form-control" placeholder="123456789AZ001" required maxlength="14" minlength="14" name="bi" id="bi1" [(ngModel)]="subscritor.bi" #bi="ngModel" pattern="^[0-9]{9}[a-zA-Z]{2}[0-9]{3}" autocomplete="off">
               </div>
               <div class="alert alert-danger error" *ngIf="!bi.valid && ( bi.dirty || bi.touched)">
                 <span *ngIf="bi.errors.required" class="help-block"><i class="fa fa-remove"></i> Campo obrigatório.</span>
@@ -71,13 +71,13 @@
         </div>
         <div class="form-group row"> 
           <div class="col-sm-6">
-            <label class="col-form-label">E-mail<span >*</span></label>
+            <label class="col-form-label" for="email1">E-mail<span >*</span></label>
             <div  [class.has-success]="email.valid && ( email.dirty || email.touched)" [class.has-danger]="!email.valid && ( email.dirty || email.touched)">  
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="sizing-addon1"><i class="fa fa-envelope"></i></span>
                 </div>
-                <input type="email" class="form-control" placeholder="email@email.com" required  pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" name="email" [(ngModel)]="subscritor.email" #email="ngModel" autocomplete="off">
+                <input type="email" class="form-control" placeholder="email@email.com" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" name="email" id="email1" [(ngModel)]="subscritor.email" #email="ngModel" autocomplete="off">
               </div>
               <div class="alert alert-danger error" *ngIf="!email.valid && (email.dirty || email.touched)">
                 <span *ngIf="email.errors.required" class="help-block"><i class="fa fa-remove"></i> Campo obrigatório.</span>
@@ -87,13 +87,13 @@
             <span style="color: red" *ngIf="dados?.email">{{dados.email}}</span>
           </div> <!---->
           <div class="col-sm-6">
-            <label class="col-form-label">Nº Telemóvel<span >*</span></label>
+            <label class="col-form-label" for="telefone1">Nº Telemóvel<span >*</span></label>
             <div [class.has-success]="telefone.valid && (telefone.dirty || telefone.touched)" [class.has-danger]="!telefone.valid && (telefone.dirty || telefone.touched)">  
               <div class="input-group">
                 <div class="input-group-prepend"> 
                   <span class="input-group-text" id="sizing-addon1"><i class="fa fa-phone"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Nº de telefone" required  name="telefone" minlength="9" maxlength="9" [(ngModel)]="subscritor.telemovel" #telefone="ngModel" autocomplete="off" pattern="^[0-9]*$">
+                <input type="text" class="form-control" placeholder="Nº de telefone" required  name="telefone" id="telefone1" minlength="9" maxlength="9" [(ngModel)]="subscritor.telemovel" #telefone="ngModel" autocomplete="off" pattern="^[0-9]*$">
               </div>
               <div class="alert alert-danger error" *ngIf="!telefone.valid && (telefone.dirty || telefone.touched)">
                 <span *ngIf="telefone.errors.required" class="help-block"><i class="fa fa-remove"></i> Campo obrigatório. </span>
@@ -106,16 +106,16 @@
         </div>
         <div class="form-group row"> 
           <div class="col-sm-6">
-            <label class="col-form-label">Endereço de correspondência - Rua<span >*</span></label>
+            <label class="col-form-label" for="rua1">Endereço de correspondência - Rua<span >*</span></label>
             <div  [class.has-success]="rua.valid && ( rua.dirty || rua.touched)" [class.has-danger]="!rua.valid && ( rua.dirty || rua.touched)"> 
-              <input type="text" class="form-control" placeholder="Escreva a rua" required name="rua" [(ngModel)]="subscritor.rua" #rua="ngModel" autocomplete="off">
+              <input type="text" class="form-control" placeholder="Escreva a rua" required name="rua" id="rua1" [(ngModel)]="subscritor.rua" #rua="ngModel" autocomplete="off">
               <div class="alert alert-danger error" *ngIf="!rua.valid && ( rua.dirty || rua.touched)">*Campo obrigatório</div>
             </div> 
           </div>
           <div class="col-sm-6">
-            <label class="col-form-label">Endereço de correspondência - Cidade<span >*</span></label>
+            <label class="col-form-label" for="cidade1">Endereço de correspondência - Cidade<span >*</span></label>
             <div  [class.has-success]="cidade.valid && ( cidade.dirty || cidade.touched)" [class.has-danger]="!cidade.valid && ( cidade.dirty || cidade.touched)"> 
-              <input type="text" class="form-control" placeholder="Escreva a cidade" required name="cidade" [(ngModel)]="subscritor.cidade" #cidade="ngModel" autocomplete="off">
+              <input type="text" class="form-control" placeholder="Escreva a cidade" required name="cidade" id="cidade1" [(ngModel)]="subscritor.cidade" #cidade="ngModel" autocomplete="off">
               <div class="alert alert-danger error" *ngIf="!cidade.valid && ( cidade.dirty || cidade.touched)">*Campo obrigatório</div>
             </div>
           </div>
