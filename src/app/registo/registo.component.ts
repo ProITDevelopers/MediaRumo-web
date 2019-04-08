@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 
-import { ToastrService } from 'ngx-toastr';
-
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 
 import { Subscritor,SubscritorValidar } from '../model/subscritor';
@@ -18,7 +16,7 @@ import * as $ from 'jquery';
 export class RegistoComponent implements OnInit {
 
   constructor(private subscritorService:RegistoService,private datePipe: DatePipe,
-  	private toastr: ToastrService,private localeService: BsLocaleService) { 
+    private localeService: BsLocaleService) { 
   	this.minDate = new Date();
     this.maxDate = new Date();
     this.minDate.setDate(this.minDate.getDate() - 43800);
