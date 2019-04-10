@@ -5,6 +5,8 @@ $background-color_2: #f9d608;
 .main {
 	overflow: auto;
 	padding-bottom: 70px;
+	background-color: $background-color_2;
+	 min-height: 90vh;
 }
 .footer {
 	position: fixed;
