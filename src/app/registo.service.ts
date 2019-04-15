@@ -13,24 +13,12 @@ export class RegistoService {
    url1="https://console.proitappsolutions.com/cliente/chave";
 
    headers = new HttpHeaders();
-   
+   //registo concurso
    cadastrar(subscritor:Subscritor):Observable<any>{
     return this.http.post(this.url,subscritor, { headers: this.headers });
    }
+   //chave two factor
    validarDados(subscritorv:SubscritorValidar):Observable<any>{
-
     return this.http.post(this.url1,subscritorv, { headers: this.headers });
-   }
-   getSubscritores():Observable<any>{
-    return this.http.get(this.url, { headers: this.headers });
-   }
-   private handlerError(errorResponse:HttpErrorResponse){
-   	if(errorResponse.error instanceof ErrorEvent){
-   		console.error('Client Side Error: ', errorResponse.error.message);
-   	}else{
-   		console.log('Server side Error: ', errorResponse);
-   	}
-   	//return new ErrorObservable()
-
    }
 }

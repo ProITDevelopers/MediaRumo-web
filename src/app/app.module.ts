@@ -11,13 +11,11 @@ import { defineLocale } from 'ngx-bootstrap/chronos';
 import { ptBrLocale } from 'ngx-bootstrap/locale';
 defineLocale('pt-br', ptBrLocale); 
 
-//import { DataTablesModule } from 'angular-datatables';
-//import { ToastrModule } from 'ngx-toastr';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistoComponent } from './registo/registo.component';
 import { HeaderComponent } from './header/header.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,13 +29,7 @@ import { HeaderComponent } from './header/header.component';
     ReactiveFormsModule,
     HttpClientModule,
     //AppRoutingModule,
-    //DataTablesModule,
-    BsDatepickerModule.forRoot(),
-    /*ToastrModule.forRoot({
-    timeOut: 20000,
-    positionClass: 'toast-top-right',
-    preventDuplicates: true,
-  })*/
+    BsDatepickerModule.forRoot()
   ],
   providers: [ DatePipe],
   bootstrap: [AppComponent]

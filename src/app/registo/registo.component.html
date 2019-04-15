@@ -1,12 +1,16 @@
-<div class="container-fluid" >
-  <div class="row">
-    <div class="col-md-7">
+<div class="container-fluid" ><!--Inicio div container-fluid-->
+  <!--Inicio div imagem-->
+  <div class="row"><!--Inicio div row-->
+    <div class="col-md-7"><!--Inicio div imagem-->
       <img  [src]="image" alt="img-concurso">
-    </div>
-    <div class="col-md-5" >
+    </div><!--Fim div imagem-->
+    
+    <div class="col-md-5" ><!--Inicio div inscricao-->
       <h2 class="text-center my-5">Inscrição Sorteio Media Rumo</h2>
+      <!--inicio form-->
       <form (ngSubmit)="validarSubscritor(subscritorF)" #subscritorF="ngForm" novalidate >
-        <div class="form-group row"> 
+        <div class="form-group row"><!--Inicio div row-->
+          <!--Inicio div nome--> 
           <div class="col-sm-6">
             <label class=" col-form-label" for="nome1">Nome próprio<span >*</span></label>
             <div  [class.has-success]="nome.valid && ( nome.dirty || nome.touched)" [class.has-danger]="!nome.valid && ( nome.dirty || nome.touched)"> 
@@ -21,8 +25,8 @@
                 <span *ngIf="nome.errors.pattern" class="help-block"><i class="fa fa-remove"></i> Formato inválido. Deve ter apenas letras.</span>
               </div>
             </div> 
-          </div>
-          <div class="col-sm-6">
+          </div><!--fim div nome-->
+          <div class="col-sm-6"><!--Inicio div apelido-->
             <label class=" col-form-label" for="apelido1">Apelido<span>*</span></label>
             <div  [class.has-success]="apelido.valid && ( apelido.dirty || apelido.touched)" [class.has-danger]="!apelido.valid && ( apelido.dirty || apelido.touched)"> 
               <div class="input-group ">
@@ -36,10 +40,10 @@
                 <span *ngIf="apelido.errors.pattern" class="help-block"><i class="fa fa-remove"></i> Formato inválido. Deve ter apenas letras.</span>
               </div>
             </div> 
-          </div>
-        </div> 
-        <div class="form-group row">
-          <div class="col-sm-6" >
+          </div><!--fim div apelido-->
+        </div> <!--fim div row-->
+        <div class="form-group row"><!--inicio div row-->
+          <div class="col-sm-6" ><!--inicio div datanascimento-->
             <label class=" col-form-label" for="dataNascimento1">Data de nascimento<span >*</span></label>  
             <div class="input-group">
               <input type="text" id="dtn" name="dtnasc" class="form-control" [(ngModel)]="dataNascimento" id="dataNascimento1" placeholder="Data de nascimento" #dp="bsDatepicker"
@@ -50,8 +54,8 @@
                 </span>
               </div>
             </div>
-          </div>
-          <div class="col-sm-6">
+          </div><!--fim div datanascimento-->
+          <div class="col-sm-6"><!--Inicio div bi-->
             <label class="col-form-label" for="bi1">Bilhete de identidade<span >*</span></label>
             <div [class.has-success]="bi.valid && ( bi.dirty || bi.touched)" [class.has-danger]="!bi.valid && ( bi.dirty || bi.touched)">  
               <div class="input-group">
@@ -67,10 +71,10 @@
               </div>
             </div>
             <span style="color: red" *ngIf="dados?.bi">{{dados.bi}}</span>
-          </div>
-        </div>
-        <div class="form-group row"> 
-          <div class="col-sm-6">
+          </div><!--fim div bi-->
+        </div><!--fim div row-->
+        <div class="form-group row"> <!--Inicio div row-->
+          <div class="col-sm-6"><!--Inicio div email-->
             <label class="col-form-label" for="email1">E-mail<span >*</span></label>
             <div  [class.has-success]="email.valid && ( email.dirty || email.touched)" [class.has-danger]="!email.valid && ( email.dirty || email.touched)">  
               <div class="input-group">
@@ -85,8 +89,8 @@
               </div> 
             </div> 
             <span style="color: red" *ngIf="dados?.email">{{dados.email}}</span>
-          </div> <!---->
-          <div class="col-sm-6">
+          </div> <!--Fim div email-->
+          <div class="col-sm-6"><!--Inicio div telemovel-->
             <label class="col-form-label" for="telefone1">Nº Telemóvel<span >*</span></label>
             <div [class.has-success]="telefone.valid && (telefone.dirty || telefone.touched)" [class.has-danger]="!telefone.valid && (telefone.dirty || telefone.touched)">  
               <div class="input-group">
@@ -102,51 +106,45 @@
               </div>
             </div>
              <span style="color: red" *ngIf="dados?.telemovel">{{dados.telemovel}}</span>
-          </div>
-        </div>
-        <div class="form-group row"> 
-          <div class="col-sm-6">
+          </div><!--fim div telemovel-->
+        </div><!--fim div row-->
+        <div class="form-group row"><!--Inicio div row--> 
+          <div class="col-sm-6"><!--Inicio div rua-->
             <label class="col-form-label" for="rua1">Endereço de correspondência - Rua<span >*</span></label>
             <div  [class.has-success]="rua.valid && ( rua.dirty || rua.touched)" [class.has-danger]="!rua.valid && ( rua.dirty || rua.touched)"> 
               <input type="text" class="form-control" placeholder="Escreva a rua" required name="rua" id="rua1" [(ngModel)]="subscritor.rua" #rua="ngModel" autocomplete="off">
               <div class="alert alert-danger error" *ngIf="!rua.valid && ( rua.dirty || rua.touched)">*Campo obrigatório</div>
             </div> 
-          </div>
-          <div class="col-sm-6">
+          </div><!--fim div rua-->
+          <div class="col-sm-6"><!--Inicio div cidade-->
             <label class="col-form-label" for="cidade1">Endereço de correspondência - Cidade<span >*</span></label>
             <div  [class.has-success]="cidade.valid && ( cidade.dirty || cidade.touched)" [class.has-danger]="!cidade.valid && ( cidade.dirty || cidade.touched)"> 
               <input type="text" class="form-control" placeholder="Escreva a cidade" required name="cidade" id="cidade1" [(ngModel)]="subscritor.cidade" #cidade="ngModel" autocomplete="off">
               <div class="alert alert-danger error" *ngIf="!cidade.valid && ( cidade.dirty || cidade.touched)">*Campo obrigatório</div>
             </div>
-          </div>
-        </div> 
-        <div class="form-group form-check">
+          </div><!--fim div cidade-->
+        </div><!--fim div row--> 
+        <div class="form-group form-check"><!--Inicio div check termo-->
           <input type="checkbox" class="form-check-input" id="exampleCheck1" [checked]="termo" (change)="termo= !termo">
           <label class="form-check-label" for="exampleCheck1">Concordo com a <a href="#">Política de Privacidade</a> e os <a href="assets/termosCondicoes.pdf" target="_blank" rel="noopener">Termos de Serviço</a></label>
            <label class="col-form-label" for="exampleInfo"><!-- <span style="color: red;">* </span> --> O custo de adesão ao concurso é de: 5000 kz</label>
-        </div>
-        
-        <div class="form-group row">
-          <div class="col-sm-9">
+        </div><!--fim div check termo-->
+        <div class="form-group row"><!--Inicio div row-->
+          <div class="col-sm-9"><!--Inicio div button-->
              <button type="submit" id="myButton" class="btn btn-default mr-1" [disabled]="!subscritorF.form.valid || !termo"> Registrar </button>
 
             <button type="button" class="btn btn-outline-secondary" (click)="clean(subscritorF)"> Repor </button>
-          </div>
-        </div>
-        <div class="alert alert-success" role="alert" *ngIf="mensagem">
+          </div><!--fim div button-->
+        </div><!--fim div row-->
+        <div class="alert alert-success" role="alert" *ngIf="mensagem"><!--Inicio div sucesso-->
           <i class="fa fa-check "></i> {{mensagem}}
-        </div>
+        </div><!--fim div sucesso-->
         <!-- <span style="color: red" ></span> -->
-      </form>
-    </div>
-  </div>
-</div>  
+      </form><!--fim form-->
+    </div><!--Fim div inscricao-->
+  </div><!--fim div row-->
+</div><!--fim div container-fluid-->  
 
- <!--
-Button trigger modal
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button> -->
 <div id="modalTrigger" data-toggle="modal" data-target="#exampleModal"></div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -164,6 +162,7 @@ Button trigger modal
           <p *ngIf="subscritor.telemovel"><a href="#" (click)="validarSubscritor(subscritorF)">Não recebeu o código?</a></p> 
           <h5>Insira o código de 6 dígitos: </h5> 
           <!--<div class="col-xs-6 ml-2">-->
+            <!--inicio form-->
             <form (ngSubmit)="cadastrarSubscritor(validarF)" #validarF="ngForm" novalidate >
               <div class="form-group phone-number row mb-2">
                 <div class="col-xs-1 mr-2 mb-1">
@@ -193,7 +192,7 @@ Button trigger modal
                   <button type="button" class="btn btn-danger" (click)="cancelar(validarF)" data-dismiss="modal"> Cancelar </button>
                 </div>
               </div> 
-            </form>
+            </form><!--fim form-->
           <!-- </div> -->
         </div>
       </div>
@@ -203,4 +202,4 @@ Button trigger modal
       </div>-->
     </div>
   </div>
-</div>
+</div><!--fim modal-->

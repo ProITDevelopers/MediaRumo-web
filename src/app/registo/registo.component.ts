@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import * as $ from 'jquery';
 
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 
 import { Subscritor,SubscritorValidar } from '../model/subscritor';
 import { RegistoService} from '../registo.service';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'app-registo',
@@ -40,17 +40,15 @@ export class RegistoComponent implements OnInit {
   codigo4:number;
   codigo5:number;
   codigo6:number;
-  image='assets/concurso.png';
+  image='assets/concurso mediarumo.png';
   
   ngOnInit() {
-  	//var dt=this.datePipe.transform(new Date(), 'yyyy-MM-dd');
-  	/*console.log(this.termo)
-  	setTimeout(() => this.toastr.success('sup'))*/
   }
   //Mudar estado checkbox
   termoChange() {
     this.termo =  !this.termo;
   }
+  //Mudar texto do botão
   changeTextButton(estado:boolean,texto:string){
     var element = <HTMLInputElement> document.getElementById("myButton");
     element.disabled = estado;
@@ -67,6 +65,7 @@ export class RegistoComponent implements OnInit {
     this.mensagem='';
     //$('#modalTrigger').click();
   }
+  //Cancelar registo concurso
   cancelar(form:NgForm){
     form.reset();
     this.termoChange();
@@ -77,28 +76,27 @@ export class RegistoComponent implements OnInit {
   //cadastro inscricao apos confirmar
   cadastrarSubscritor(form){
     let num=this.codigo1+this.codigo2+this.codigo3+this.codigo4+this.codigo5+this.codigo6;
-    //console.log(num);
     this.subscritor.chave=num.toString();
     /*form.value.myButton.disabled = true;
     form.value.myButton.value = "Please wait...";*/
     this.changeTextButton(true,"Processando...");
     this.subscritor.dataNascimento=this.datePipe.transform(this.dataNascimento, 'yyyy-MM-dd'); 
-  	this.subscritorService.cadastrar(this.subscritor).subscribe(data=> {
-      //console.log(data)
+  	this.subscritorService.cadastrar(this.subscritor).subscribe(
+      data=> {
         $('#modalTrigger').click();
         this.dados=data;
         //this.mensagem='Inscrição feita com sucesso! O seu id é: ' +this.dados[0];
         this.mensagem='Inscrição feita com sucesso';
-        //form.reset();
         setTimeout(() =>this.clean(this.form,form),9000)
-    },
-       error => {
+      },
+      error => {
         this.changeTextButton(false,"Registrar");
        	this.dados=error.error.error;
        	//this.mensagem=error.error;
         this.mensagem='';
         this.mensagemChave=this.dados.chave;
-    });/**/
+      }
+    );
   }
   //enviar telemovel para mensagem
   validarSubscritor(form){
@@ -107,23 +105,22 @@ export class RegistoComponent implements OnInit {
     this.subscritorv.telemovel=this.subscritor.telemovel;
     this.subscritorv.bi=this.subscritor.bi;
     this.subscritorv.email=this.subscritor.email;
-    //console.log(this.subscritorv);
     this.form=form;
     //$('#modalTrigger').click();
-    this.subscritorService.validarDados(this.subscritorv).subscribe(data=> {
-        //console.log(data)
+    this.subscritorService.validarDados(this.subscritorv).subscribe(
+      data=> {
         this.dados=data;
         $('#modalTrigger').click();
-    },
-    error => {
-      this.changeTextButton(false,"Registrar");
-      this.dados=error.error.error;
-      this.mensagem='';
-    });/**/
+      },
+      error => {
+        this.changeTextButton(false,"Registrar");
+        this.dados=error.error.error;
+        this.mensagem='';
+      }
+    );
   }
   //Tab auto
   keytab(event,maxlength){
-    //console.log('value '+event.target.value,'length '+event.target.value.length,'maxlength '+maxlength);
     $(".input").keypress(function (e) {
       //var maxLength = $(this).attr("maxlength");
       
@@ -146,7 +143,7 @@ export class RegistoComponent implements OnInit {
       if(e.keyCode == 8 || e.which == 46){
         //console.log('backspace trapped')
         var prevFirst = $(this).closest('.col-xs-1').prev().find('.input');
-         prevFirst.focus();
+        prevFirst.focus();
       }
     })
   }
