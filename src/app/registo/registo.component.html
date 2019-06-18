@@ -62,7 +62,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="sizing-addon3"><i class="fa fa-file-text"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="123456789AZ001" required maxlength="14" minlength="14" name="bi" id="bi1" [(ngModel)]="subscritor.bi" #bi="ngModel" pattern="^[0-9]{9}[a-zA-Z]{2}[0-9]{3}" autocomplete="off">
+                <input type="text" class="form-control" placeholder="123456789AZ001" required maxlength="14" minlength="14" name="bi" id="bi1" [(ngModel)]="subscritor.bi" #bi="ngModel" pattern="^[0-9]{9}[A-Z]{2}[0-9]{3}" autocomplete="off">
               </div>
               <div class="alert alert-danger error" *ngIf="!bi.valid && ( bi.dirty || bi.touched)">
                 <span *ngIf="bi.errors.required" class="help-block"><i class="fa fa-remove"></i> Campo obrigatório.</span>

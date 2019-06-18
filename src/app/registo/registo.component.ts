@@ -54,12 +54,18 @@ export class RegistoComponent implements OnInit {
     element.disabled = estado;
     element.textContent = texto;
   }
+  changeTextButtonNum(estado:boolean,texto:string){
+    var element = <HTMLInputElement> document.getElementById("validar");
+    element.disabled = estado;
+    element.textContent = texto;
+  }
   //Limpar formprincipal
   clean(form:NgForm,form1?:NgForm){
     var element = <HTMLInputElement> document.getElementById("myButton");
   	form.reset();
     form1.reset();
     this.changeTextButton(true,"Registrar");
+    this.changeTextButtonNum(true,"Enviar");
   	this.termoChange();
   	this.dados='';
     this.mensagem='';
@@ -71,6 +77,7 @@ export class RegistoComponent implements OnInit {
     this.termoChange();
     this.dados='';
     this.mensagem='';
+    this.changeTextButtonNum(false,"Enviar");
     this.changeTextButton(true,"Registrar");
   }
   //cadastro inscricao apos confirmar
@@ -79,7 +86,8 @@ export class RegistoComponent implements OnInit {
     this.subscritor.chave=num.toString();
     /*form.value.myButton.disabled = true;
     form.value.myButton.value = "Please wait...";*/
-    this.changeTextButton(true,"Processando...");
+    //this.changeTextButton(true,"Processando...");
+    this.changeTextButtonNum(true,"Validando...");
     this.subscritor.dataNascimento=this.datePipe.transform(this.dataNascimento, 'yyyy-MM-dd'); 
   	this.subscritorService.cadastrar(this.subscritor).subscribe(
       data=> {
@@ -90,7 +98,8 @@ export class RegistoComponent implements OnInit {
         setTimeout(() =>this.clean(this.form,form),9000)
       },
       error => {
-        this.changeTextButton(false,"Registrar");
+        //this.changeTextButton(false,"Registrar");
+        this.changeTextButtonNum(false,"Enviar");
        	this.dados=error.error.error;
        	//this.mensagem=error.error;
         this.mensagem='';
