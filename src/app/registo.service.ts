@@ -11,11 +11,18 @@ export class RegistoService {
   constructor(private http:HttpClient) { }
    url="https://console.proitappsolutions.com/cliente";
    url1="https://console.proitappsolutions.com/cliente/chave";
-
    headers = new HttpHeaders();
    //registo concurso
    cadastrar(subscritor:Subscritor):Observable<any>{
     return this.http.post(this.url,subscritor, { headers: this.headers });
+   }
+   //Provincias,{ headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+   cidades():Observable<any>{
+    return this.http.get(this.url+'/region');
+   }
+   //municipios
+   municipios(regiao):Observable<any>{
+     return this.http.get(this.url+'/city='+regiao);
    }
    //chave two factor
    validarDados(subscritorv:SubscritorValidar):Observable<any>{

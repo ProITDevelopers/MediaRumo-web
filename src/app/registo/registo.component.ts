@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import * as $ from 'jquery';
 
+import { Observable } from 'rxjs';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 
 import { Subscritor,SubscritorValidar } from '../model/subscritor';
@@ -21,6 +22,8 @@ export class RegistoComponent implements OnInit {
     this.maxDate = new Date();
     this.minDate.setDate(this.minDate.getDate() - 43800);
     this.maxDate.setDate(this.maxDate.getDate() - 6570);
+   this.maxDate1= this.datePipe.transform(this.maxDate, 'yyyy-MM-dd');
+    this.minDate1=this.datePipe.transform(this.minDate, 'yyyy-MM-dd')
     this.localeService.use('pt-br');
   }
 
@@ -29,6 +32,8 @@ export class RegistoComponent implements OnInit {
   termo:boolean=false;
   maxDate: Date;
   minDate: Date;
+  maxDate1:any;
+  minDate1: any;
   dataNascimento:Date;
   dados;
   form:NgForm;
@@ -41,8 +46,11 @@ export class RegistoComponent implements OnInit {
   codigo5:number;
   codigo6:number;
   image='assets/concurso mediarumo.png';
-  
+  municipios:Observable<any[]>;
+  cidades:Observable<any[]>;
+
   ngOnInit() {
+    this.getCidades();
   }
   //Mudar estado checkbox
   termoChange() {
@@ -94,7 +102,7 @@ export class RegistoComponent implements OnInit {
         $('#modalTrigger').click();
         this.dados=data;
         //this.mensagem='Inscrição feita com sucesso! O seu id é: ' +this.dados[0];
-        this.mensagem='Inscrição feita com sucesso';
+        this.mensagem='Inscrição feita com sucesso. Receberá um email e uma mensagem no seu telemóvel com a referência de pagamento.';
         setTimeout(() =>this.clean(this.form,form),9000)
       },
       error => {
@@ -156,4 +164,14 @@ export class RegistoComponent implements OnInit {
       }
     })
   }
+  getCidades(){
+    this.cidades=this.subscritorService.cidades();
+  }
+  onSelect(municipio){
+    if (municipio != '') {
+      this.municipios=this.subscritorService.municipios(municipio);
+    }
+    
+  }
+  
 }

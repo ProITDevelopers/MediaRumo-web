@@ -20,9 +20,9 @@
                 </div>
                 <input type="text" class="form-control" placeholder="Escreva o seu nome" required name="nome" id="nome1" [(ngModel)]="subscritor.nomeProprio" pattern="^[a-zA-Z]{1,20}$" #nome="ngModel" autocomplete="off">
               </div>
-              <div class="alert alert-danger error" *ngIf="!nome.valid && ( nome.dirty || nome.touched)">
-                <span *ngIf="nome.errors.required" class="help-block"><i class="fa fa-remove"></i> Campo obrigatório.</span>
-                <span *ngIf="nome.errors.pattern" class="help-block"><i class="fa fa-remove"></i> Formato inválido. Deve ter apenas letras.</span>
+              <div class="mt-1" *ngIf="!nome.valid && ( nome.dirty || nome.touched)">
+                <span *ngIf="nome.errors.required" class="form-text">*Campo obrigatório.</span>
+                <span *ngIf="nome.errors.pattern" class="form-text"><i class="fa fa-remove"></i> Formato inválido. Deve ter apenas letras.</span>
               </div>
             </div> 
           </div><!--fim div nome-->
@@ -35,25 +35,35 @@
                 </div>
                 <input type="text" class="form-control" placeholder="Escreva o seu apelido" required name="apelido" id="apelido1" [(ngModel)]="subscritor.apelido" pattern="^[a-zA-Z]{1,20}$" #apelido="ngModel" autocomplete="off">
               </div>
-              <div class="alert alert-danger error" *ngIf="!apelido.valid && ( apelido.dirty || apelido.touched)">
-                <span *ngIf="apelido.errors.required" class="help-block"><i class="fa fa-remove"></i> Campo obrigatório.</span>
-                <span *ngIf="apelido.errors.pattern" class="help-block"><i class="fa fa-remove"></i> Formato inválido. Deve ter apenas letras.</span>
+              <div class="mt-1" *ngIf="!apelido.valid && ( apelido.dirty || apelido.touched)">
+                <span *ngIf="apelido.errors.required" class="form-text">*Campo obrigatório.</span>
+                <span *ngIf="apelido.errors.pattern" class="form-text"><i class="fa fa-remove"></i> Formato inválido. Deve ter apenas letras.</span>
               </div>
             </div> 
           </div><!--fim div apelido-->
         </div> <!--fim div row-->
         <div class="form-group row"><!--inicio div row-->
           <div class="col-sm-6" ><!--inicio div datanascimento-->
-            <label class=" col-form-label" for="dataNascimento1">Data de nascimento<span >*</span></label>  
-            <div class="input-group">
-              <input type="text" id="dtn" name="dtnasc" class="form-control" [(ngModel)]="dataNascimento" id="dataNascimento1" placeholder="Data de nascimento" #dp="bsDatepicker"
+            <label class=" col-form-label" for="dataNascimento1">Data de nascimento<span >*</span></label> 
+            <div [class.has-success]="dtnasc.valid && ( dtnasc.dirty || dtnasc.touched)" [class.has-danger]="!dtnasc.valid && ( dtnasc.dirty || dtnasc.touched)">
+              <input type="date" name="dtnasc" id="dataNascimento1" [min]="minDate1" [max]="maxDate1"  [(ngModel)]="dataNascimento" class="form-control" required #dtnasc="ngModel"/>
+              <div class="mt-1" *ngIf="!dtnasc.valid && ( dtnasc.dirty || dtnasc.touched)">
+                <span *ngIf="dtnasc.errors.required" class="form-text">*Campo obrigatório.</span>
+                <!-- <span *ngIf="dtnasc.errors.pattern" class="form-text"><i class="fa fa-remove"></i>pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" Data de nascimento inválida</span> -->
+                <span *ngIf="dtnasc.errors.min" class="form-text"><i class="fa fa-remove"></i> Deve ter entre 18 e 100 anos de idade.</span>
+                <span *ngIf="dtnasc.errors.max" class="form-text"><i class="fa fa-remove"></i> Deve ter entre 18 e 100 anos de idade.</span>
+              </div>
+
+            </div>
+            <!-- <div class="input-group">
+              <input type="text" name="dtnasc" class="form-control" [(ngModel)]="dataNascimento" id="dataNascimento1" placeholder="Data de nascimento" #dp="bsDatepicker"
              bsDatepicker [minDate]="minDate" [maxDate]="maxDate" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',containerClass:'theme-blue' }" required readonly>
               <div class="input-group-prepend"> 
                 <span class="input-group-text" id="basic-addon" (click)="dp.toggle()" [attr.aria-expanded]="dp.isOpen">
                 <i class="fa fa-calendar"></i>
                 </span>
               </div>
-            </div>
+            </div> -->
           </div><!--fim div datanascimento-->
           <div class="col-sm-6"><!--Inicio div bi-->
             <label class="col-form-label" for="bi1">Bilhete de identidade<span >*</span></label>
@@ -64,10 +74,10 @@
                 </div>
                 <input type="text" class="form-control" placeholder="123456789AZ001" required maxlength="14" minlength="14" name="bi" id="bi1" [(ngModel)]="subscritor.bi" #bi="ngModel" pattern="^[0-9]{9}[A-Z]{2}[0-9]{3}" autocomplete="off">
               </div>
-              <div class="alert alert-danger error" *ngIf="!bi.valid && ( bi.dirty || bi.touched)">
-                <span *ngIf="bi.errors.required" class="help-block"><i class="fa fa-remove"></i> Campo obrigatório.</span>
-                <span *ngIf="bi.errors.minlength" class="help-block"><i class="fa fa-remove"></i> Deve ter 14 caracteres</span>
-                <span *ngIf="bi.errors.pattern" class="help-block"><i class="fa fa-remove"></i> Formato inválido. Deve ser 123456789AZ001.</span>
+              <div class="mt-1" *ngIf="!bi.valid && ( bi.dirty || bi.touched)">
+                <span *ngIf="bi.errors.required" class="form-text">*Campo obrigatório.</span>
+                <span *ngIf="bi.errors.minlength" class="form-text"><i class="fa fa-remove"></i> Deve ter 14 caracteres</span>
+                <span *ngIf="bi.errors.pattern" class="form-text"><i class="fa fa-remove"></i> Formato inválido. Deve ser 123456789AZ001.</span>
               </div>
             </div>
             <span style="color: red" *ngIf="dados?.bi">{{dados.bi}}</span>
@@ -83,9 +93,9 @@
                 </div>
                 <input type="email" class="form-control" placeholder="email@email.com" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" name="email" id="email1" [(ngModel)]="subscritor.email" #email="ngModel" autocomplete="off">
               </div>
-              <div class="alert alert-danger error" *ngIf="!email.valid && (email.dirty || email.touched)">
-                <span *ngIf="email.errors.required" class="help-block"><i class="fa fa-remove"></i> Campo obrigatório.</span>
-                <span *ngIf="email.errors.pattern" class="help-block"><i class="fa fa-remove"></i> Email inválido</span>
+              <div class="mt-1" *ngIf="!email.valid && (email.dirty || email.touched)">
+                <span *ngIf="email.errors.required" class="form-text">*Campo obrigatório.</span>
+                <span *ngIf="email.errors.pattern" class="form-text"><i class="fa fa-remove"></i> Email inválido</span>
               </div> 
             </div> 
             <span style="color: red" *ngIf="dados?.email">{{dados.email}}</span>
@@ -99,30 +109,43 @@
                 </div>
                 <input type="text" class="form-control" placeholder="Nº de telefone" required  name="telefone" id="telefone1" minlength="9" maxlength="9" [(ngModel)]="subscritor.telemovel" #telefone="ngModel" autocomplete="off" pattern="^[0-9]*$">
               </div>
-              <div class="alert alert-danger error" *ngIf="!telefone.valid && (telefone.dirty || telefone.touched)">
-                <span *ngIf="telefone.errors.required" class="help-block"><i class="fa fa-remove"></i> Campo obrigatório. </span>
-                <span *ngIf="telefone.errors.minlength" class="help-block"><i class="fa fa-remove"></i> Deve ter no mínimo 9 dígitos</span>
-                <span *ngIf="telefone.errors.pattern" class="help-block"><i class="fa fa-remove"></i> Formato inválido</span>
+              <div class="mt-1" *ngIf="!telefone.valid && (telefone.dirty || telefone.touched)">
+                <span *ngIf="telefone.errors.required" class="form-text">*Campo obrigatório. </span>
+                <span *ngIf="telefone.errors.minlength" class="form-text"><i class="fa fa-remove"></i> Deve ter no mínimo 9 dígitos</span>
+                <span *ngIf="telefone.errors.pattern" class="form-text"><i class="fa fa-remove"></i> Formato inválido</span>
               </div>
             </div>
-             <span style="color: red" *ngIf="dados?.telemovel">{{dados.telemovel}}</span>
+            <span style="color: red" *ngIf="dados?.telemovel">{{dados.telemovel}}</span>
           </div><!--fim div telemovel-->
         </div><!--fim div row-->
         <div class="form-group row"><!--Inicio div row--> 
-          <div class="col-sm-6"><!--Inicio div rua-->
-            <label class="col-form-label" for="rua1">Endereço de correspondência - Rua<span >*</span></label>
-            <div  [class.has-success]="rua.valid && ( rua.dirty || rua.touched)" [class.has-danger]="!rua.valid && ( rua.dirty || rua.touched)"> 
-              <input type="text" class="form-control" placeholder="Escreva a rua" required name="rua" id="rua1" [(ngModel)]="subscritor.rua" #rua="ngModel" autocomplete="off">
-              <div class="alert alert-danger error" *ngIf="!rua.valid && ( rua.dirty || rua.touched)">*Campo obrigatório</div>
-            </div> 
-          </div><!--fim div rua-->
           <div class="col-sm-6"><!--Inicio div cidade-->
             <label class="col-form-label" for="cidade1">Endereço de correspondência - Cidade<span >*</span></label>
-            <div  [class.has-success]="cidade.valid && ( cidade.dirty || cidade.touched)" [class.has-danger]="!cidade.valid && ( cidade.dirty || cidade.touched)"> 
-              <input type="text" class="form-control" placeholder="Escreva a cidade" required name="cidade" id="cidade1" [(ngModel)]="subscritor.cidade" #cidade="ngModel" autocomplete="off">
-              <div class="alert alert-danger error" *ngIf="!cidade.valid && ( cidade.dirty || cidade.touched)">*Campo obrigatório</div>
+            <div  [class.has-success]="cidade.valid && ( cidade.dirty || cidade.touched)" [class.has-danger]="!cidade.valid && ( cidade.dirty || cidade.touched)">
+              <select class="form-control" name="cidade" id="cidade1" [(ngModel)]="subscritor.cidade" (change)="onSelect($event.target.value)" #cidade="ngModel" required>
+                  <option *ngIf="cidades==null" value="">--Escolha a cidade--</option>  
+                    <option *ngFor=" let cidade of cidades | async" [value]="cidade.provincia">{{cidade.provincia}}</option> 
+              </select>
+              <!--<input type="text" class="form-control" placeholder="Escreva a cidade" required name="cidade" id="cidade1" [(ngModel)]="subscritor.cidade" #cidade="ngModel" autocomplete="off">-->
+              <div class="mt-1" *ngIf="!cidade.valid && ( cidade.dirty || cidade.touched)">
+                <span *ngIf="cidade.errors.required" class="form-text">*Campo obrigatório.</span>
+              </div>
             </div>
-          </div><!--fim div cidade-->
+          </div>
+          <div class="col-sm-6"><!-- Inicio div municipio -->
+            <label class="col-form-label" for="municipio1">Endereço de correspondência - Município<span >*</span></label>
+            <div  [class.has-success]="municipio.valid && ( municipio.dirty || municipio.touched)" [class.has-danger]="!municipio.valid && ( municipio.dirty || municipio.touched)">
+              <!--<input type="text" class="form-control" placeholder="Escreva o município"  name="municipio" id="municipio1" [(ngModel)]="subscritor.municipio" #municipio="ngModel" autocomplete="off" required>--> 
+              <select class="form-control" name="municipio" id="municipio1" [(ngModel)]="subscritor.municipio" #municipio="ngModel" required>
+                <option *ngIf="municipios == null" value="">--Escolha o município--</option><!--*ngIf="(municipios | async)?.length == 0"-->
+                    <option *ngFor=" let municipio1 of municipios | async" [value]="municipio1.municipio">  {{municipio1.municipio}}
+                    </option>
+              </select>
+              <div class="mt-1" *ngIf="!municipio.valid && ( municipio.dirty || municipio.touched)">
+                <span *ngIf="municipio.errors.required" class="form-text">*Campo obrigatório.</span>
+              </div>
+            </div> 
+          </div><!--fim div municipio-->
         </div><!--fim div row--> 
         <div class="form-group form-check"><!--Inicio div check termo-->
           <input type="checkbox" class="form-check-input" id="exampleCheck1" [checked]="termo" (change)="termo= !termo">

@@ -2,6 +2,7 @@ $background-color_1: #ffffff;
 $background-color_2: #f9d608;
 $color_1: black;
 $color_2: #495057;
+$color_3: red;
 $background-color_3: #fff;
 $border_1: #ced4da;
 .btn-default {
@@ -32,7 +33,9 @@ $border_1: #ced4da;
 	    }
 	}
 }
-
+.form-text{
+	color:$color_3;
+}
 /*Phone Number Input "hack"*/
 .phone-number {
 	.row{

@@ -3,7 +3,7 @@ export class Subscritor {
 	apelido:string;
 	dataNascimento:string;
 	email:string;
-	rua:string;
+	municipio:string;
 	cidade:string;
 	telemovel:string;
 	bi:string;
