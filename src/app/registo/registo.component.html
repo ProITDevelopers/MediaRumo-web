@@ -18,7 +18,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="sizing-addon1"><i class="fa fa-user"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Escreva o seu nome" required name="nome" id="nome1" [(ngModel)]="subscritor.nomeProprio" pattern="^[a-zA-Z]{1,20}$" #nome="ngModel" autocomplete="off">
+                <input type="text" class="form-control" placeholder="Escreva o seu nome" required name="nome" id="nome1" [(ngModel)]="subscritor.nomeProprio" pattern="[A-Za-zÀ-ú ']{3,}" #nome="ngModel" autocomplete="off">
               </div>
               <div class="mt-1" *ngIf="!nome.valid && ( nome.dirty || nome.touched)">
                 <span *ngIf="nome.errors.required" class="form-text">*Campo obrigatório.</span>
@@ -33,7 +33,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="sizing-addon2"><i class="fa fa-user"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Escreva o seu apelido" required name="apelido" id="apelido1" [(ngModel)]="subscritor.apelido" pattern="^[a-zA-Z]{1,20}$" #apelido="ngModel" autocomplete="off">
+                <input type="text" class="form-control" placeholder="Escreva o seu apelido" required name="apelido" id="apelido1" [(ngModel)]="subscritor.apelido" pattern="[A-Za-zÀ-ú ']{3,}" #apelido="ngModel" autocomplete="off">
               </div>
               <div class="mt-1" *ngIf="!apelido.valid && ( apelido.dirty || apelido.touched)">
                 <span *ngIf="apelido.errors.required" class="form-text">*Campo obrigatório.</span>
@@ -189,19 +189,19 @@
             <form (ngSubmit)="cadastrarSubscritor(validarF)" #validarF="ngForm" novalidate >
               <div class="form-group phone-number row mb-2">
                 <div class="col-xs-1 mr-2 mb-1">
-                  <input type="tel" id="c1" name="phone1" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo1" #ccodigo1="ngModel" required title="" (keyup)="keytab($event,1)" autocomplete="off">
+                  <input type="tel" id="c1" name="phone1" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo1" #ccodigo1="ngModel" required title=""  autocomplete="off"><!--(keyup)="keytab($event,1)"-->
                 </div>
                 <div class="col-xs-1 mr-2  mb-1">
-                  <input type="tel" id="c2" name="phone2" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo2" #ccodigo2="ngModel" required title="" (keyup)="keytab($event,1)" autocomplete="off">
+                  <input type="tel" id="c2" name="phone2" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo2" #ccodigo2="ngModel" required title="" autocomplete="off">
                 </div>
                 <div class="col-xs-1 mr-2  mb-1">
-                  <input type="tel" id="c3" name="phone3" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo3" #ccodigo3="ngModel" required title="" (keyup)="keytab($event,1)" autocomplete="off">
+                  <input type="tel" id="c3" name="phone3" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo3" #ccodigo3="ngModel" required title="" autocomplete="off">
                 </div>
                 <div class="col-xs-1 mr-2 mb-1">
-                  <input type="tel" id="c4" name="phone4" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo4" #ccodigo4="ngModel" required title="" (keyup)="keytab($event,1)" autocomplete="off">
+                  <input type="tel" id="c4" name="phone4" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo4" #ccodigo4="ngModel" required title="" autocomplete="off">
                 </div>
                 <div class="col-xs-1 mr-2 mb-1">
-                  <input type="tel" id="c5" name="phone5" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo5" #ccodigo5="ngModel" required title="" (keyup)="keytab($event,1)" autocomplete="off">
+                  <input type="tel" id="c5" name="phone5" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo5" #ccodigo5="ngModel" required title="" autocomplete="off">
                 </div>
                 <div class="col-xs-1 mr-2 mb-1">
                   <input type="tel" id="c6" name="phone6" class="form-control input" value="" size="1" maxlength="1" pattern="[0-9]{1}" [(ngModel)]="codigo6" #ccodigo6="ngModel" required title="" autocomplete="off">

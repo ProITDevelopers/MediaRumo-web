@@ -51,6 +51,30 @@ export class RegistoComponent implements OnInit {
 
   ngOnInit() {
     this.getCidades();
+    $(".input").keypress(function (e) {
+      //var maxLength = $(this).attr("maxlength");
+      
+      if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+       //console.log('h');
+       return false
+      }else{
+        var length=$(this).length;
+        var maxLength=$(this).attr("maxlength");/**/
+        console.log(maxLength,length)
+        if (length === +maxLength) {
+         var nextFirst = $(this).closest('.col-xs-1').next().find('.input');
+         nextFirst.focus();
+        }/**/
+      }  
+    });
+    //backspace
+    $('.input').keyup(function(e){
+      if(e.keyCode == 8 || e.which == 46){
+        //console.log('backspace trapped')
+        var prevFirst = $(this).closest('.col-xs-1').prev().find('.input');
+        prevFirst.focus();
+      }
+    })
   }
   //Mudar estado checkbox
   termoChange() {
